@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>보훈 교재</title>
+  <link rel="stylesheet" href="assets/vendor/pretendard/pretendard.css" />
+  <link rel="stylesheet" href="tokens/design-tokens.css" />
+  <link rel="stylesheet" href="assets/css/app.css?v=20260907b" />
+  <link rel="stylesheet" href="assets/vendor/quill/quill.snow.css" />
+</head>
+<body>
+  <div class="app">
+    <div class="stageWrap" id="stageWrap">
+      <div class="stage" id="stage"></div>
+      <div class="chrome" id="chrome"></div>
+
+      <div class="pager">
+        <button id="prev" aria-label="이전">‹</button>
+        <span class="pos"><input id="pagerInput" class="pg-in" type="text" inputmode="numeric" maxlength="3" aria-label="페이지 번호 입력" /><span id="pagerTotal"> / 1</span></span>
+        <button id="next" aria-label="다음">›</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 검색 오버레이 -->
+  <div class="search-ov" id="searchOv">
+    <button class="close" id="searchClose" aria-label="닫기">×</button>
+    <input id="searchInput" placeholder="전체 교재에서 검색 (페이지 제목)" />
+    <div class="results" id="searchRes"></div>
+  </div>
+
+  <!-- 세로모드 경고 -->
+  <div class="portrait">
+    <div class="rot">📱</div>
+    <div class="msg">가로 모드로 봐 주세요</div>
+    <div class="sub">보훈 교재는 가로 화면에 최적화되어 있습니다.</div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="assets/vendor/quill/quill.min.js"></script>
+  <script src="assets/vendor/html2canvas.min.js"></script>
+  <script src="assets/vendor/html2pdf.bundle.min.js"></script>
+  <script src="content/01_title.js"></script>
+  <script src="assets/js/app.js?v=20260907b"></script>
+</body>
+</html>

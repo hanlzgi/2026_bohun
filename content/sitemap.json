@@ -1,0 +1,8028 @@
+{
+  "title": "보훈 교재",
+  "stage": {
+    "w": 1920,
+    "h": 1080
+  },
+  "chrome": {
+    "logo": {
+      "x": 76,
+      "y": 156,
+      "r": 44,
+      "action": "link",
+      "url": "https://www.mpva.go.kr",
+      "label": "국가보훈부"
+    },
+    "rail": [
+      {
+        "x": 75,
+        "y": 396,
+        "action": "share",
+        "label": "퍼가기 (링크 복사)"
+      },
+      {
+        "x": 75,
+        "y": 503,
+        "action": "scrap",
+        "label": "페이지 스크랩"
+      },
+      {
+        "x": 75,
+        "y": 611,
+        "action": "note",
+        "label": "탐방노트 열기"
+      },
+      {
+        "x": 75,
+        "y": 718,
+        "action": "search",
+        "label": "검색"
+      },
+      {
+        "x": 75,
+        "y": 825,
+        "action": "pdf",
+        "label": "PDF 다운로드"
+      },
+      {
+        "x": 75,
+        "y": 932,
+        "action": "fullscreen",
+        "label": "전체화면"
+      }
+    ],
+    "top": [
+      {
+        "x": 1524,
+        "y": 117,
+        "action": "back",
+        "label": "이전 페이지"
+      },
+      {
+        "x": 1621,
+        "y": 117,
+        "action": "portal",
+        "url": "https://culture.mpva.go.kr/",
+        "label": "보훈문화종합포털"
+      },
+      {
+        "x": 1718,
+        "y": 117,
+        "action": "map",
+        "label": "코스 지도로 이동"
+      },
+      {
+        "x": 1813,
+        "y": 117,
+        "action": "toc",
+        "label": "목차"
+      }
+    ],
+    "iconR": 34,
+    "home": {
+      "x": 75,
+      "y": 289,
+      "action": "home",
+      "label": "표지로"
+    }
+  },
+  "courseColors": {
+    "1": "#7c5cff",
+    "2": "#23b07a",
+    "3": "#3aa0ff",
+    "4": "#ff5fa2"
+  },
+  "pages": [
+    {
+      "id": "title",
+      "title": "타이틀",
+      "type": "title",
+      "course": null,
+      "available": true,
+      "render": "editable",
+      "bg": "assets/01_title/png/cover.webp",
+      "mapPin": false
+    },
+    {
+      "id": "toc",
+      "title": "목차 (코스 선택)",
+      "type": "toc",
+      "course": null,
+      "available": true,
+      "render": "editable",
+      "mapPin": false
+    },
+    {
+      "id": "c1-map",
+      "title": "1코스 지도",
+      "type": "map",
+      "course": 1,
+      "available": true,
+      "render": "image",
+      "mapPin": false,
+      "mapHotspots": [
+        {
+          "x": 1549,
+          "y": 362,
+          "r": 34,
+          "label": "상하이",
+          "link": "c1-read1",
+          "card": "assets/c1/map/c1-map_card1.webp"
+        },
+        {
+          "x": 1496,
+          "y": 418,
+          "r": 34,
+          "label": "자싱",
+          "link": "c1-read3",
+          "card": "assets/c1/map/c1-map_card2.webp"
+        },
+        {
+          "x": 1440,
+          "y": 472,
+          "r": 34,
+          "label": "항저우",
+          "link": "c1-read5",
+          "card": "assets/c1/map/c1-map_card3.webp"
+        },
+        {
+          "x": 1064,
+          "y": 533,
+          "r": 34,
+          "label": "창사",
+          "link": "c1-read6",
+          "card": "assets/c1/map/c1-map_card4.webp"
+        },
+        {
+          "x": 877,
+          "y": 810,
+          "r": 34,
+          "label": "류저우",
+          "link": "c1-read7",
+          "card": "assets/c1/map/c1-map_card5.webp"
+        },
+        {
+          "x": 684,
+          "y": 388,
+          "r": 34,
+          "label": "충칭",
+          "link": "c1-read8",
+          "card": "assets/c1/map/c1-map_card6.webp"
+        },
+        {
+          "x": 893,
+          "y": 104,
+          "r": 34,
+          "label": "시안",
+          "link": "c1-read10",
+          "card": "assets/c1/map/c1-map_card7.webp"
+        }
+      ],
+      "mapCardRect": {
+        "x": 733,
+        "y": 214,
+        "w": 562,
+        "h": 679
+      },
+      "mapSvg": "assets/c1/map/c1-map.svg",
+      "mapBadge": "중국",
+      "mapTitle": "대한민국\n임시 정부의 길"
+    },
+    {
+      "id": "c1-prestudy",
+      "title": "1코스 사전 학습",
+      "type": "prestudy",
+      "course": 1,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "buttons": [
+        {
+          "type": "ar",
+          "rect": {
+            "x": 320,
+            "y": 800,
+            "w": 80,
+            "h": 136
+          },
+          "key": "ar",
+          "place": "right"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 1010,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 315,
+            "y": 415,
+            "w": 603,
+            "h": 457
+          },
+          "radius": 20
+        }
+      ],
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 130,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700,
+          "align": "left"
+        },
+        {
+          "id": "body",
+          "x": 1010,
+          "y": 410,
+          "w": 709,
+          "size": 25,
+          "color": "#0d0e12",
+          "family": "sans",
+          "weight": 400,
+          "align": "left",
+          "lineHeight": 1.5,
+          "multi": true
+        },
+        {
+          "id": "caption",
+          "x": 380,
+          "y": 883,
+          "w": 518,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.3,
+          "align": "center"
+        }
+      ]
+    },
+    {
+      "id": "c1-intro1",
+      "title": "1코스 개론 1",
+      "type": "intro",
+      "course": 1,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 130,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 375,
+          "w": 1010,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 320,
+          "y": 610,
+          "w": 1010,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s3",
+          "type": "section",
+          "x": 320,
+          "y": 805,
+          "w": 1010,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption1",
+          "x": 1400,
+          "y": 640,
+          "w": 330,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        },
+        {
+          "id": "caption2",
+          "x": 1400,
+          "y": 930,
+          "w": 330,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1400,
+            "y": 415,
+            "w": 330,
+            "h": 218
+          },
+          "radius": 20
+        },
+        {
+          "rect": {
+            "x": 1400,
+            "y": 705,
+            "w": 330,
+            "h": 218
+          },
+          "radius": 20
+        }
+      ]
+    },
+    {
+      "id": "c1-read1",
+      "title": "1코스 읽기자료 1",
+      "type": "reading",
+      "course": 1,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 395,
+          "w": 700,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 315,
+          "y": 670,
+          "w": 700,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption",
+          "x": 1234,
+          "y": 921,
+          "w": 365,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1115,
+            "y": 434,
+            "w": 604,
+            "h": 458
+          },
+          "radius": 20
+        }
+      ],
+      "buttons": [
+        {
+          "type": "add",
+          "rect": {
+            "x": 315,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 445,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add2",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 575,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add3",
+          "place": "up"
+        },
+        {
+          "type": "gmap",
+          "rect": {
+            "x": 451,
+            "y": 156,
+            "w": 55,
+            "h": 55
+          },
+          "key": "gmap"
+        },
+        {
+          "type": "inter",
+          "rect": {
+            "x": 705,
+            "y": 905,
+            "w": 170,
+            "h": 39
+          },
+          "key": "inter",
+          "place": "up"
+        }
+      ]
+    },
+    {
+      "id": "c1-read2",
+      "title": "1코스 읽기자료 2",
+      "type": "reading",
+      "course": 1,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 1000,
+          "y": 395,
+          "w": 700,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 1000,
+          "y": 670,
+          "w": 700,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption",
+          "x": 377,
+          "y": 900,
+          "w": 477,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 315,
+            "y": 400,
+            "w": 603,
+            "h": 490
+          },
+          "radius": 20
+        }
+      ],
+      "buttons": [
+        {
+          "type": "add",
+          "rect": {
+            "x": 1000,
+            "y": 900,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 1130,
+            "y": 900,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add2",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 1260,
+            "y": 900,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add3",
+          "place": "up"
+        },
+        {
+          "type": "gmap",
+          "rect": {
+            "x": 451,
+            "y": 156,
+            "w": 55,
+            "h": 55
+          },
+          "key": "gmap"
+        }
+      ]
+    },
+    {
+      "id": "c1-intro2",
+      "title": "1코스 개론 2",
+      "type": "intro",
+      "course": 1,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 130,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 380,
+          "w": 1010,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 315,
+          "y": 575,
+          "w": 1010,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s3",
+          "type": "section",
+          "x": 315,
+          "y": 820,
+          "w": 1010,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption1",
+          "x": 1400,
+          "y": 615,
+          "w": 330,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        },
+        {
+          "id": "caption2",
+          "x": 1400,
+          "y": 905,
+          "w": 330,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1400,
+            "y": 390,
+            "w": 330,
+            "h": 218
+          },
+          "radius": 20
+        },
+        {
+          "rect": {
+            "x": 1400,
+            "y": 680,
+            "w": 330,
+            "h": 218
+          },
+          "radius": 20
+        }
+      ],
+      "buttons": []
+    },
+    {
+      "id": "c1-read3",
+      "title": "1코스 읽기자료 3",
+      "type": "reading",
+      "course": 1,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 395,
+          "w": 705,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 315,
+          "y": 630,
+          "w": 705,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption",
+          "x": 1260,
+          "y": 905,
+          "w": 300,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1115,
+            "y": 440,
+            "w": 603,
+            "h": 457
+          },
+          "radius": 20
+        }
+      ],
+      "buttons": [
+        {
+          "type": "add",
+          "rect": {
+            "x": 315,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 445,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add2",
+          "place": "up"
+        },
+        {
+          "type": "gmap",
+          "rect": {
+            "x": 451,
+            "y": 156,
+            "w": 55,
+            "h": 55
+          },
+          "key": "gmap"
+        },
+        {
+          "type": "vr",
+          "rect": {
+            "x": 1640,
+            "y": 830,
+            "w": 76,
+            "h": 136
+          },
+          "key": "vr"
+        }
+      ]
+    },
+    {
+      "id": "c1-read4",
+      "title": "1코스 읽기자료 4",
+      "type": "reading",
+      "course": 1,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 395,
+          "w": 720,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 315,
+          "y": 660,
+          "w": 720,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption",
+          "x": 1210,
+          "y": 905,
+          "w": 380,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1115,
+            "y": 440,
+            "w": 603,
+            "h": 457
+          },
+          "radius": 20
+        }
+      ],
+      "buttons": [
+        {
+          "type": "add",
+          "rect": {
+            "x": 315,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 445,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add2",
+          "place": "up"
+        },
+        {
+          "type": "gmap",
+          "rect": {
+            "x": 451,
+            "y": 156,
+            "w": 55,
+            "h": 55
+          },
+          "key": "gmap"
+        },
+        {
+          "type": "vr",
+          "rect": {
+            "x": 1640,
+            "y": 830,
+            "w": 76,
+            "h": 136
+          },
+          "key": "vr"
+        }
+      ]
+    },
+    {
+      "id": "c1-read5",
+      "title": "1코스 읽기자료 5",
+      "type": "reading",
+      "course": 1,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 1000,
+          "y": 395,
+          "w": 720,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 1000,
+          "y": 630,
+          "w": 720,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption",
+          "x": 430,
+          "y": 875,
+          "w": 400,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 315,
+            "y": 410,
+            "w": 603,
+            "h": 457
+          },
+          "radius": 20
+        }
+      ],
+      "buttons": [
+        {
+          "type": "add",
+          "rect": {
+            "x": 1000,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 1130,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add2",
+          "place": "up"
+        },
+        {
+          "type": "gmap",
+          "rect": {
+            "x": 451,
+            "y": 156,
+            "w": 55,
+            "h": 55
+          },
+          "key": "gmap"
+        },
+        {
+          "type": "vr",
+          "rect": {
+            "x": 315,
+            "y": 800,
+            "w": 76,
+            "h": 136
+          },
+          "key": "vr"
+        }
+      ]
+    },
+    {
+      "id": "c1-read6",
+      "title": "1코스 읽기자료 6",
+      "type": "reading",
+      "course": 1,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 810,
+          "y": 425,
+          "w": 930,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 810,
+          "y": 660,
+          "w": 930,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption",
+          "x": 315,
+          "y": 880,
+          "w": 424,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 350,
+            "y": 415,
+            "w": 341,
+            "h": 457
+          },
+          "radius": 20
+        }
+      ],
+      "buttons": [
+        {
+          "type": "add",
+          "rect": {
+            "x": 810,
+            "y": 900,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 940,
+            "y": 900,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add2",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 1070,
+            "y": 900,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add3",
+          "place": "up"
+        },
+        {
+          "type": "gmap",
+          "rect": {
+            "x": 451,
+            "y": 156,
+            "w": 55,
+            "h": 55
+          },
+          "key": "gmap"
+        }
+      ]
+    },
+    {
+      "id": "c1-read7",
+      "title": "1코스 읽기자료 7",
+      "type": "reading",
+      "course": 1,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 395,
+          "w": 720,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 315,
+          "y": 665,
+          "w": 720,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption",
+          "x": 1200,
+          "y": 900,
+          "w": 425,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1115,
+            "y": 435,
+            "w": 603,
+            "h": 457
+          },
+          "radius": 20
+        }
+      ],
+      "buttons": [
+        {
+          "type": "add",
+          "rect": {
+            "x": 315,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 445,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add2",
+          "place": "up"
+        },
+        {
+          "type": "gmap",
+          "rect": {
+            "x": 451,
+            "y": 156,
+            "w": 55,
+            "h": 55
+          },
+          "key": "gmap"
+        }
+      ]
+    },
+    {
+      "id": "c1-intro3",
+      "title": "1코스 개론 3",
+      "type": "intro",
+      "course": 1,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 130,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 380,
+          "w": 1000,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 315,
+          "y": 575,
+          "w": 1000,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s3",
+          "type": "section",
+          "x": 315,
+          "y": 800,
+          "w": 1000,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption1",
+          "x": 1400,
+          "y": 615,
+          "w": 330,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        },
+        {
+          "id": "caption2",
+          "x": 1400,
+          "y": 935,
+          "w": 330,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1400,
+            "y": 390,
+            "w": 330,
+            "h": 218
+          },
+          "radius": 20
+        },
+        {
+          "rect": {
+            "x": 1400,
+            "y": 700,
+            "w": 330,
+            "h": 218
+          },
+          "radius": 20
+        }
+      ],
+      "buttons": []
+    },
+    {
+      "id": "c1-read8",
+      "title": "1코스 읽기자료 8",
+      "type": "reading",
+      "course": 1,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 395,
+          "w": 745,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 315,
+          "y": 670,
+          "w": 745,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption",
+          "x": 1125,
+          "y": 900,
+          "w": 603,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1125,
+            "y": 434,
+            "w": 603,
+            "h": 458
+          },
+          "radius": 20
+        }
+      ],
+      "buttons": [
+        {
+          "type": "add",
+          "rect": {
+            "x": 315,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 445,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add2",
+          "place": "up"
+        },
+        {
+          "type": "gmap",
+          "rect": {
+            "x": 451,
+            "y": 156,
+            "w": 55,
+            "h": 55
+          },
+          "key": "gmap"
+        }
+      ]
+    },
+    {
+      "id": "c1-read9",
+      "title": "1코스 읽기자료 9",
+      "type": "reading",
+      "course": 1,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 390,
+          "w": 720,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 315,
+          "y": 665,
+          "w": 720,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption",
+          "x": 1200,
+          "y": 900,
+          "w": 400,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1115,
+            "y": 434,
+            "w": 603,
+            "h": 457
+          },
+          "radius": 20
+        }
+      ],
+      "buttons": [
+        {
+          "type": "add",
+          "rect": {
+            "x": 315,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 445,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add2",
+          "place": "up"
+        },
+        {
+          "type": "vr",
+          "rect": {
+            "x": 1640,
+            "y": 825,
+            "w": 76,
+            "h": 136
+          },
+          "key": "vr"
+        },
+        {
+          "type": "gmap",
+          "rect": {
+            "x": 451,
+            "y": 156,
+            "w": 55,
+            "h": 55
+          },
+          "key": "gmap"
+        }
+      ]
+    },
+    {
+      "id": "c1-read10",
+      "title": "1코스 읽기자료 10",
+      "type": "reading",
+      "course": 1,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 1000,
+          "y": 400,
+          "w": 720,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 1000,
+          "y": 640,
+          "w": 720,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption",
+          "x": 421,
+          "y": 875,
+          "w": 391,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 315,
+            "y": 410,
+            "w": 603,
+            "h": 457
+          },
+          "radius": 20
+        }
+      ],
+      "buttons": [
+        {
+          "type": "ar",
+          "rect": {
+            "x": 315,
+            "y": 805,
+            "w": 76,
+            "h": 136
+          },
+          "key": "ar",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 1000,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 1130,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add2",
+          "place": "up"
+        },
+        {
+          "type": "gmap",
+          "rect": {
+            "x": 451,
+            "y": 156,
+            "w": 55,
+            "h": 55
+          },
+          "key": "gmap"
+        }
+      ]
+    },
+    {
+      "id": "c1-quiz1",
+      "title": "1코스 퀴즈 1",
+      "type": "quiz",
+      "course": 1,
+      "available": true,
+      "mapPin": true,
+      "hasText": true,
+      "photoSlot": {
+        "rect": {
+          "x": 400,
+          "y": 479,
+          "w": 512,
+          "h": 491
+        },
+        "radius": 14,
+        "zoom": true
+      },
+      "options": {
+        "x": 1050,
+        "y": 485,
+        "stepY": 123,
+        "w": 677,
+        "h": 81
+      },
+      "answerLayout": {
+        "question": {
+          "x": 425,
+          "y": 375,
+          "w": 1025,
+          "size": 32,
+          "color": "#ffffff",
+          "weight": 700,
+          "align": "center",
+          "lineHeight": 1.4
+        },
+        "label": {
+          "x": 523,
+          "y": 602,
+          "w": 858,
+          "size": 34,
+          "color": "#ffffff",
+          "weight": 700,
+          "align": "center"
+        },
+        "explanation": {
+          "x": 523,
+          "y": 685,
+          "w": 900,
+          "size": 27,
+          "color": "#1d1d1b",
+          "weight": 400,
+          "lineHeight": 1.5
+        }
+      },
+      "qtext": {
+        "x": 292,
+        "y": 238,
+        "w": 1490,
+        "size": 32,
+        "color": "#ffffff",
+        "weight": 600,
+        "lineHeight": 1.3
+      },
+      "questionPanel": {
+        "src": "assets/c1/quiz/quiz1.svg",
+        "x": 248,
+        "y": 46,
+        "w": 1566,
+        "h": 335
+      },
+      "answerPanel": {
+        "src": "assets/c1/quiz/ans1.svg",
+        "x": 214,
+        "y": 120,
+        "w": 1493,
+        "h": 840
+      }
+    },
+    {
+      "id": "c1-quiz2",
+      "title": "1코스 퀴즈 2",
+      "type": "quiz",
+      "course": 1,
+      "available": true,
+      "mapPin": true,
+      "hasText": true,
+      "qtext": {
+        "x": 292,
+        "y": 232,
+        "w": 1490,
+        "size": 30,
+        "color": "#ffffff",
+        "weight": 600,
+        "lineHeight": 1.32
+      },
+      "photoSlot": {
+        "rect": {
+          "x": 454,
+          "y": 479,
+          "w": 403,
+          "h": 491
+        },
+        "radius": 14,
+        "zoom": true
+      },
+      "options": {
+        "x": 1050,
+        "y": 485,
+        "stepY": 123,
+        "w": 677,
+        "h": 81
+      },
+      "answerLayout": {
+        "question": {
+          "x": 425,
+          "y": 375,
+          "w": 1025,
+          "size": 28,
+          "color": "#ffffff",
+          "weight": 700,
+          "align": "center",
+          "lineHeight": 1.4
+        },
+        "label": {
+          "x": 523,
+          "y": 602,
+          "w": 858,
+          "size": 34,
+          "color": "#ffffff",
+          "weight": 700,
+          "align": "center"
+        },
+        "explanation": {
+          "x": 523,
+          "y": 685,
+          "w": 900,
+          "size": 27,
+          "color": "#1d1d1b",
+          "weight": 400,
+          "lineHeight": 1.5
+        }
+      },
+      "questionPanel": {
+        "src": "assets/c1/quiz/quiz2.svg",
+        "x": 248,
+        "y": 46,
+        "w": 1566,
+        "h": 335
+      },
+      "answerPanel": {
+        "src": "assets/c1/quiz/ans2.svg",
+        "x": 214,
+        "y": 120,
+        "w": 1493,
+        "h": 840
+      }
+    },
+    {
+      "id": "c1-quiz3",
+      "title": "1코스 퀴즈 3",
+      "type": "quiz",
+      "course": 1,
+      "available": true,
+      "mapPin": true,
+      "hasText": true,
+      "qtext": {
+        "x": 292,
+        "y": 232,
+        "w": 1475,
+        "size": 30,
+        "color": "#ffffff",
+        "weight": 600,
+        "lineHeight": 1.32
+      },
+      "photoSlot": {
+        "rect": {
+          "x": 260,
+          "y": 479,
+          "w": 715,
+          "h": 491
+        },
+        "radius": 14,
+        "zoom": true
+      },
+      "options": {
+        "x": 1050,
+        "y": 485,
+        "stepY": 123,
+        "w": 677,
+        "h": 81
+      },
+      "answerLayout": {
+        "question": {
+          "x": 425,
+          "y": 375,
+          "w": 1025,
+          "size": 28,
+          "color": "#ffffff",
+          "weight": 700,
+          "align": "center",
+          "lineHeight": 1.4
+        },
+        "label": {
+          "x": 523,
+          "y": 602,
+          "w": 858,
+          "size": 34,
+          "color": "#ffffff",
+          "weight": 700,
+          "align": "center"
+        },
+        "explanation": {
+          "x": 523,
+          "y": 685,
+          "w": 900,
+          "size": 27,
+          "color": "#1d1d1b",
+          "weight": 400,
+          "lineHeight": 1.5
+        }
+      },
+      "questionPanel": {
+        "src": "assets/c1/quiz/quiz3.svg",
+        "x": 248,
+        "y": 46,
+        "w": 1566,
+        "h": 335
+      },
+      "answerPanel": {
+        "src": "assets/c1/quiz/ans3.svg",
+        "x": 214,
+        "y": 120,
+        "w": 1493,
+        "h": 840
+      }
+    },
+    {
+      "id": "c2-map",
+      "title": "2코스 지도",
+      "type": "map",
+      "course": 2,
+      "available": true,
+      "render": "image",
+      "mapPin": false,
+"mapHotspots": [
+        {
+          "x": 1284,
+          "y": 576,
+          "r": 34,
+          "label": "연해주",
+          "link": "c2-read1",
+          "card": "assets/c2/map/c2-map_card1.webp"
+        },
+        {
+          "x": 982,
+          "y": 173,
+          "r": 34,
+          "label": "하얼빈",
+          "link": "c2-read2",
+          "card": "assets/c2/map/c2-map_card2.webp"
+        },
+        {
+          "x": 507,
+          "y": 941,
+          "r": 34,
+          "label": "뤼순",
+          "link": "c2-read4",
+          "card": "assets/c2/map/c2-map_card3.webp"
+        },
+        {
+          "x": 897,
+          "y": 592,
+          "r": 34,
+          "label": "류허",
+          "link": "c2-read5",
+          "card": "assets/c2/map/c2-map_card4.webp"
+        },
+        {
+          "x": 832,
+          "y": 682,
+          "r": 34,
+          "label": "퉁화",
+          "link": "c2-read6",
+          "card": "assets/c2/map/c2-map_card5.webp"
+        },
+        {
+          "x": 1170,
+          "y": 516,
+          "r": 34,
+          "label": "왕칭",
+          "link": "c2-read8",
+          "card": "assets/c2/map/c2-map_card6.webp"
+        },
+        {
+          "x": 1051,
+          "y": 621,
+          "r": 34,
+          "label": "허룽",
+          "link": "c2-read9",
+          "card": "assets/c2/map/c2-map_card7.webp"
+        },
+        {
+          "x": 1191,
+          "y": 309,
+          "r": 34,
+          "label": "하이린",
+          "link": "c2-read10",
+          "card": "assets/c2/map/c2-map_card8.webp"
+        }
+      ],
+      "mapCardRect": {
+        "x": 733,
+        "y": 214,
+        "w": 562,
+        "h": 679
+      },
+      "mapSvg": "assets/c2/map/c2-map.svg",
+      "mapBadge": "중국/러시아",
+      "mapTitle": "항일 무장\n투쟁의 길"
+    },
+    {
+      "id": "c2-prestudy",
+      "title": "2코스 사전 학습",
+      "type": "prestudy",
+      "course": 2,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "buttons": [
+        {
+          "type": "vr",
+          "rect": {
+            "x": 320,
+            "y": 800,
+            "w": 80,
+            "h": 136
+          },
+          "key": "vr",
+          "place": "right"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 1600,
+            "y": 925,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 315,
+            "y": 415,
+            "w": 603,
+            "h": 457
+          },
+          "radius": 20
+        }
+      ],
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 130,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700,
+          "align": "left"
+        },
+        {
+          "id": "body",
+          "x": 1010,
+          "y": 410,
+          "w": 709,
+          "size": 23,
+          "color": "#0d0e12",
+          "family": "sans",
+          "weight": 400,
+          "align": "left",
+          "lineHeight": 1.5,
+          "multi": true
+        },
+        {
+          "id": "caption",
+          "x": 400,
+          "y": 883,
+          "w": 523,
+          "size": 19,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.3,
+          "align": "center"
+        }
+      ]
+    },
+    {
+      "id": "c2-intro1",
+      "title": "2코스 개론 1",
+      "type": "intro",
+      "course": 2,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 130,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 375,
+          "w": 1010,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 320,
+          "y": 580,
+          "w": 1010,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s3",
+          "type": "section",
+          "x": 320,
+          "y": 835,
+          "w": 1010,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption1",
+          "x": 1400,
+          "y": 640,
+          "w": 330,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        },
+        {
+          "id": "caption2",
+          "x": 1400,
+          "y": 930,
+          "w": 330,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1400,
+            "y": 415,
+            "w": 330,
+            "h": 218
+          },
+          "radius": 20
+        },
+        {
+          "rect": {
+            "x": 1400,
+            "y": 705,
+            "w": 330,
+            "h": 218
+          },
+          "radius": 20
+        }
+      ]
+    },
+    {
+      "id": "c2-read1",
+      "title": "2코스 읽기자료 1",
+      "type": "reading",
+      "course": 2,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 395,
+          "w": 700,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 315,
+          "y": 670,
+          "w": 700,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption",
+          "x": 1234,
+          "y": 921,
+          "w": 365,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1115,
+            "y": 434,
+            "w": 604,
+            "h": 458
+          },
+          "radius": 20
+        }
+      ],
+      "buttons": [
+        {
+          "type": "add",
+          "rect": {
+            "x": 315,
+            "y": 915,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 445,
+            "y": 915,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add2",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 575,
+            "y": 915,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add3",
+          "place": "up"
+        },
+        {
+          "type": "gmap",
+          "rect": {
+            "x": 451,
+            "y": 156,
+            "w": 55,
+            "h": 55
+          },
+          "key": "gmap"
+        }
+      ]
+    },
+    {
+      "id": "c2-read2",
+      "title": "2코스 읽기자료 2",
+      "type": "reading",
+      "course": 2,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 395,
+          "w": 705,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 315,
+          "y": 660,
+          "w": 705,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption",
+          "x": 1260,
+          "y": 905,
+          "w": 300,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1115,
+            "y": 440,
+            "w": 603,
+            "h": 457
+          },
+          "radius": 20
+        }
+      ],
+      "buttons": [
+        {
+          "type": "add",
+          "rect": {
+            "x": 315,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 445,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add2",
+          "place": "up"
+        },
+        {
+          "type": "gmap",
+          "rect": {
+            "x": 451,
+            "y": 156,
+            "w": 55,
+            "h": 55
+          },
+          "key": "gmap"
+        },
+        {
+          "type": "vr",
+          "rect": {
+            "x": 1640,
+            "y": 830,
+            "w": 76,
+            "h": 136
+          },
+          "key": "vr"
+        }
+      ]
+    },
+    {
+      "id": "c2-read3",
+      "title": "2코스 읽기자료 3",
+      "type": "reading",
+      "course": 2,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 395,
+          "w": 700,
+          "size": 24,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 315,
+          "y": 680,
+          "w": 700,
+          "size": 24,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption",
+          "x": 1234,
+          "y": 921,
+          "w": 365,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1115,
+            "y": 434,
+            "w": 604,
+            "h": 458
+          },
+          "radius": 20
+        }
+      ],
+      "buttons": [
+        {
+          "type": "add",
+          "rect": {
+            "x": 315,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 445,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add2",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 575,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add3",
+          "place": "up"
+        },
+        {
+          "type": "gmap",
+          "rect": {
+            "x": 451,
+            "y": 156,
+            "w": 55,
+            "h": 55
+          },
+          "key": "gmap"
+        }
+      ]
+    },
+    {
+      "id": "c2-read4",
+      "title": "2코스 읽기자료 4",
+      "type": "reading",
+      "course": 2,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 395,
+          "w": 700,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 315,
+          "y": 670,
+          "w": 700,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption",
+          "x": 1234,
+          "y": 921,
+          "w": 365,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1115,
+            "y": 434,
+            "w": 604,
+            "h": 458
+          },
+          "radius": 20
+        }
+      ],
+      "buttons": [
+        {
+          "type": "add",
+          "rect": {
+            "x": 315,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 445,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add2",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 575,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add3",
+          "place": "up"
+        },
+        {
+          "type": "gmap",
+          "rect": {
+            "x": 451,
+            "y": 156,
+            "w": 55,
+            "h": 55
+          },
+          "key": "gmap"
+        }
+      ]
+    },
+    {
+      "id": "c2-intro2",
+      "title": "2코스 개론 2",
+      "type": "intro",
+      "course": 2,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 130,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 375,
+          "w": 1010,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 320,
+          "y": 580,
+          "w": 1010,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s3",
+          "type": "section",
+          "x": 320,
+          "y": 815,
+          "w": 1010,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption1",
+          "x": 1400,
+          "y": 640,
+          "w": 330,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        },
+        {
+          "id": "caption2",
+          "x": 1400,
+          "y": 930,
+          "w": 330,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1400,
+            "y": 415,
+            "w": 330,
+            "h": 218
+          },
+          "radius": 20
+        },
+        {
+          "rect": {
+            "x": 1400,
+            "y": 705,
+            "w": 330,
+            "h": 218
+          },
+          "radius": 20
+        }
+      ]
+    },
+    {
+      "id": "c2-read5",
+      "title": "2코스 읽기자료 5",
+      "type": "reading",
+      "course": 2,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 395,
+          "w": 710,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 315,
+          "y": 670,
+          "w": 710,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption",
+          "x": 1234,
+          "y": 921,
+          "w": 365,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1115,
+            "y": 434,
+            "w": 604,
+            "h": 458
+          },
+          "radius": 20
+        }
+      ],
+      "buttons": [
+        {
+          "type": "add",
+          "rect": {
+            "x": 315,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 445,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add2",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 575,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add3",
+          "place": "up"
+        },
+        {
+          "type": "gmap",
+          "rect": {
+            "x": 451,
+            "y": 156,
+            "w": 55,
+            "h": 55
+          },
+          "key": "gmap"
+        }
+      ]
+    },
+    {
+      "id": "c2-read6",
+      "title": "2코스 읽기자료 6",
+      "type": "reading",
+      "course": 2,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 395,
+          "w": 700,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 315,
+          "y": 630,
+          "w": 700,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption",
+          "x": 1234,
+          "y": 921,
+          "w": 365,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1115,
+            "y": 434,
+            "w": 604,
+            "h": 458
+          },
+          "radius": 20
+        }
+      ],
+      "buttons": [
+        {
+          "type": "add",
+          "rect": {
+            "x": 315,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 445,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add2",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 575,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add3",
+          "place": "up"
+        },
+        {
+          "type": "gmap",
+          "rect": {
+            "x": 451,
+            "y": 156,
+            "w": 55,
+            "h": 55
+          },
+          "key": "gmap"
+        }
+      ]
+    },
+    {
+      "id": "c2-read7",
+      "title": "2코스 읽기자료 7",
+      "type": "reading",
+      "course": 2,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 395,
+          "w": 700,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 315,
+          "y": 670,
+          "w": 700,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption",
+          "x": 1234,
+          "y": 921,
+          "w": 365,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1115,
+            "y": 434,
+            "w": 604,
+            "h": 458
+          },
+          "radius": 20
+        }
+      ],
+      "buttons": [
+        {
+          "type": "add",
+          "rect": {
+            "x": 315,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 445,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add2",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 575,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add3",
+          "place": "up"
+        },
+        {
+          "type": "gmap",
+          "rect": {
+            "x": 451,
+            "y": 156,
+            "w": 55,
+            "h": 55
+          },
+          "key": "gmap"
+        },
+        {
+          "type": "inter",
+          "rect": {
+            "x": 705,
+            "y": 905,
+            "w": 170,
+            "h": 39
+          },
+          "key": "inter",
+          "place": "up"
+        }
+      ]
+    },
+    {
+      "id": "c2-intro3",
+      "title": "2코스 개론 3",
+      "type": "intro",
+      "course": 2,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 130,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 375,
+          "w": 1010,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 320,
+          "y": 570,
+          "w": 1010,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s3",
+          "type": "section",
+          "x": 320,
+          "y": 805,
+          "w": 1010,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption1",
+          "x": 1468,
+          "y": 640,
+          "w": 196,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        },
+        {
+          "id": "caption2",
+          "x": 1465,
+          "y": 930,
+          "w": 202,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1400,
+            "y": 415,
+            "w": 330,
+            "h": 218
+          },
+          "radius": 20
+        },
+        {
+          "rect": {
+            "x": 1400,
+            "y": 705,
+            "w": 330,
+            "h": 218
+          },
+          "radius": 20
+        }
+      ]
+    },
+    {
+      "id": "c2-read8",
+      "title": "2코스 읽기자료 8",
+      "type": "reading",
+      "course": 2,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 395,
+          "w": 700,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 315,
+          "y": 670,
+          "w": 700,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption",
+          "x": 1234,
+          "y": 921,
+          "w": 365,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1115,
+            "y": 434,
+            "w": 604,
+            "h": 458
+          },
+          "radius": 20
+        }
+      ],
+      "buttons": [
+        {
+          "type": "add",
+          "rect": {
+            "x": 315,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 445,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add2",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 575,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add3",
+          "place": "up"
+        },
+        {
+          "type": "gmap",
+          "rect": {
+            "x": 451,
+            "y": 156,
+            "w": 55,
+            "h": 55
+          },
+          "key": "gmap"
+        }
+      ]
+    },
+    {
+      "id": "c2-read9",
+      "title": "2코스 읽기자료 9",
+      "type": "reading",
+      "course": 2,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 1000,
+          "y": 400,
+          "w": 720,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 1000,
+          "y": 640,
+          "w": 720,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption",
+          "x": 421,
+          "y": 875,
+          "w": 391,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 315,
+            "y": 410,
+            "w": 603,
+            "h": 457
+          },
+          "radius": 20
+        }
+      ],
+      "buttons": [
+        {
+          "type": "ar",
+          "rect": {
+            "x": 315,
+            "y": 805,
+            "w": 76,
+            "h": 136
+          },
+          "key": "ar",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 1000,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 1130,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add2",
+          "place": "up"
+        },
+        {
+          "type": "gmap",
+          "rect": {
+            "x": 451,
+            "y": 156,
+            "w": 55,
+            "h": 55
+          },
+          "key": "gmap"
+        }
+      ]
+    },
+    {
+      "id": "c2-read10",
+      "title": "2코스 읽기자료 10",
+      "type": "reading",
+      "course": 2,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 1000,
+          "y": 400,
+          "w": 720,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 1000,
+          "y": 670,
+          "w": 720,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption",
+          "x": 421,
+          "y": 875,
+          "w": 391,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 315,
+            "y": 410,
+            "w": 603,
+            "h": 457
+          },
+          "radius": 20
+        }
+      ],
+      "buttons": [
+        {
+          "type": "vr",
+          "rect": {
+            "x": 315,
+            "y": 805,
+            "w": 76,
+            "h": 136
+          },
+          "key": "vr",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 1000,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 1130,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add2",
+          "place": "up"
+        },
+        {
+          "type": "gmap",
+          "rect": {
+            "x": 451,
+            "y": 156,
+            "w": 55,
+            "h": 55
+          },
+          "key": "gmap"
+        }
+      ]
+    },
+    {
+      "id": "c2-quiz1",
+      "title": "2코스 퀴즈 1",
+      "type": "quiz",
+      "course": 2,
+      "available": true,
+      "mapPin": true,
+      "hasText": true,
+      "photoSlot": {
+        "rect": {
+          "x": 400,
+          "y": 479,
+          "w": 512,
+          "h": 491
+        },
+        "radius": 14,
+        "zoom": true
+      },
+      "options": {
+        "x": 1050,
+        "y": 485,
+        "stepY": 123,
+        "w": 677,
+        "h": 81
+      },
+      "answerLayout": {
+        "question": {
+          "x": 425,
+          "y": 375,
+          "w": 1025,
+          "size": 29,
+          "color": "#ffffff",
+          "weight": 700,
+          "align": "center",
+          "lineHeight": 1.4
+        },
+        "label": {
+          "x": 523,
+          "y": 602,
+          "w": 858,
+          "size": 34,
+          "color": "#ffffff",
+          "weight": 700,
+          "align": "center"
+        },
+        "explanation": {
+          "x": 523,
+          "y": 685,
+          "w": 900,
+          "size": 27,
+          "color": "#1d1d1b",
+          "weight": 400,
+          "lineHeight": 1.5
+        }
+      },
+      "qtext": {
+        "x": 292,
+        "y": 210,
+        "w": 1485,
+        "size": 30,
+        "color": "#ffffff",
+        "weight": 600,
+        "lineHeight": 1.35
+      },
+      "questionPanel": {
+        "src": "assets/c2/quiz/quiz1.svg",
+        "x": 248,
+        "y": 46,
+        "w": 1566,
+        "h": 335
+      },
+      "answerPanel": {
+        "src": "assets/c2/quiz/ans1.svg",
+        "x": 214,
+        "y": 120,
+        "w": 1493,
+        "h": 840
+      }
+    },
+    {
+      "id": "c2-quiz2",
+      "title": "2코스 퀴즈 2",
+      "type": "quiz",
+      "course": 2,
+      "available": true,
+      "mapPin": true,
+      "hasText": true,
+      "qtext": {
+        "x": 292,
+        "y": 210,
+        "w": 1490,
+        "size": 28,
+        "color": "#ffffff",
+        "weight": 600,
+        "lineHeight": 1.35
+      },
+      "photoSlot": {
+        "rect": {
+          "x": 260,
+          "y": 479,
+          "w": 715,
+          "h": 491
+        },
+        "radius": 14,
+        "zoom": true
+      },
+      "options": {
+        "x": 1050,
+        "y": 485,
+        "stepY": 123,
+        "w": 677,
+        "h": 81
+      },
+      "answerLayout": {
+        "question": {
+          "x": 425,
+          "y": 375,
+          "w": 1025,
+          "size": 28,
+          "color": "#ffffff",
+          "weight": 700,
+          "align": "center",
+          "lineHeight": 1.4
+        },
+        "label": {
+          "x": 523,
+          "y": 602,
+          "w": 858,
+          "size": 34,
+          "color": "#ffffff",
+          "weight": 700,
+          "align": "center"
+        },
+        "explanation": {
+          "x": 523,
+          "y": 685,
+          "w": 900,
+          "size": 27,
+          "color": "#1d1d1b",
+          "weight": 400,
+          "lineHeight": 1.5
+        }
+      },
+      "questionPanel": {
+        "src": "assets/c2/quiz/quiz2.svg",
+        "x": 248,
+        "y": 46,
+        "w": 1566,
+        "h": 335
+      },
+      "answerPanel": {
+        "src": "assets/c2/quiz/ans2.svg",
+        "x": 214,
+        "y": 120,
+        "w": 1493,
+        "h": 840
+      }
+    },
+    {
+      "id": "c2-quiz3",
+      "title": "2코스 퀴즈 3",
+      "type": "quiz",
+      "course": 2,
+      "available": true,
+      "mapPin": true,
+      "hasText": true,
+      "qtext": {
+        "x": 292,
+        "y": 210,
+        "w": 1475,
+        "size": 28,
+        "color": "#ffffff",
+        "weight": 600,
+        "lineHeight": 1.35
+      },
+      "options": {
+        "x": 650,
+        "y": 485,
+        "stepY": 123,
+        "w": 677,
+        "h": 81
+      },
+      "answerLayout": {
+        "question": {
+          "x": 425,
+          "y": 375,
+          "w": 1025,
+          "size": 28,
+          "color": "#ffffff",
+          "weight": 700,
+          "align": "center",
+          "lineHeight": 1.4
+        },
+        "label": {
+          "x": 523,
+          "y": 602,
+          "w": 858,
+          "size": 34,
+          "color": "#ffffff",
+          "weight": 700,
+          "align": "center"
+        },
+        "explanation": {
+          "x": 523,
+          "y": 685,
+          "w": 900,
+          "size": 27,
+          "color": "#1d1d1b",
+          "weight": 400,
+          "lineHeight": 1.5
+        }
+      },
+      "questionPanel": {
+        "src": "assets/c2/quiz/quiz3.svg",
+        "x": 248,
+        "y": 46,
+        "w": 1566,
+        "h": 335
+      },
+      "answerPanel": {
+        "src": "assets/c2/quiz/ans3.svg",
+        "x": 214,
+        "y": 120,
+        "w": 1493,
+        "h": 840
+      }
+    },
+    {
+      "id": "c3-map",
+      "title": "3코스 지도",
+      "type": "map",
+      "course": 3,
+      "available": true,
+      "render": "image",
+      "mapPin": false,
+      "mapHotspots": [
+        {
+          "x": 251,
+          "y": 766,
+          "r": 34,
+          "label": "하와이",
+          "link": "c3-read1",
+          "card": "assets/c3/map/c3-map_card1.webp"
+        },
+        {
+          "x": 913,
+          "y": 526,
+          "r": 34,
+          "label": "LA",
+          "link": "c3-read9",
+          "card": "assets/c3/map/c3-map_card2.webp"
+        },
+        {
+          "x": 805,
+          "y": 415,
+          "r": 34,
+          "label": "샌프란시스코",
+          "link": "c3-read5",
+          "card": "assets/c3/map/c3-map_card3.webp"
+        },
+        {
+          "x": 874,
+          "y": 462,
+          "r": 34,
+          "label": "캘리포니아",
+          "link": "c3-read6",
+          "card": "assets/c3/map/c3-map_card4.webp"
+        },
+        {
+          "x": 1642,
+          "y": 408,
+          "r": 34,
+          "label": "필라델피아",
+          "link": "c3-read7",
+          "card": "assets/c3/map/c3-map_card5.webp"
+        },
+        {
+          "x": 1696,
+          "y": 360,
+          "r": 34,
+          "label": "뉴욕",
+          "link": "c3-read8",
+          "card": "assets/c3/map/c3-map_card6.webp"
+        },
+        {
+          "x": 1583,
+          "y": 473,
+          "r": 34,
+          "label": "워싱턴 D.C.",
+          "link": "c3-read11",
+          "card": "assets/c3/map/c3-map_card7.webp"
+        }
+      ],
+      "mapCardRect": {
+        "x": 733,
+        "y": 214,
+        "w": 562,
+        "h": 679
+      },
+      "mapSvg": "assets/c3/map/c3-map.svg",
+      "mapBadge": "미국",
+      "mapTitle": "하와이 노동자의 나라에서\n우방까지"
+    },
+
+    {
+      "id": "c3-prestudy",
+      "title": "3코스 사전 학습",
+      "type": "prestudy",
+      "course": 3,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "buttons": [
+        {
+          "type": "add",
+          "rect": {
+            "x": 1010,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 1140,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add2",
+          "place": "up"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 315,
+            "y": 415,
+            "w": 603,
+            "h": 457
+          },
+          "radius": 20
+        }
+      ],
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 23,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 235,
+          "w": 1560,
+          "size": 47,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700,
+          "align": "left"
+        },
+        {
+          "id": "body",
+          "x": 1010,
+          "y": 410,
+          "w": 720,
+          "size": 24,
+          "color": "#0d0e12",
+          "family": "sans",
+          "weight": 400,
+          "align": "left",
+          "lineHeight": 1.5,
+          "multi": true
+        },
+        {
+          "id": "caption",
+          "x": 315,
+          "y": 883,
+          "w": 603,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.3,
+          "align": "center"
+        }
+      ]
+    },
+    {
+      "id": "c3-intro1",
+      "title": "3코스 개론 1",
+      "type": "intro",
+      "course": 3,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 130,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 375,
+          "w": 1010,
+          "size": 24,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 320,
+          "y": 580,
+          "w": 1010,
+          "size": 24,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s3",
+          "type": "section",
+          "x": 320,
+          "y": 860,
+          "w": 1010,
+          "size": 24,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption1",
+          "x": 1400,
+          "y": 640,
+          "w": 330,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        },
+        {
+          "id": "caption2",
+          "x": 1400,
+          "y": 930,
+          "w": 330,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1400,
+            "y": 415,
+            "w": 330,
+            "h": 218
+          },
+          "radius": 20
+        },
+        {
+          "rect": {
+            "x": 1400,
+            "y": 705,
+            "w": 330,
+            "h": 218
+          },
+          "radius": 20
+        }
+      ]
+    },
+    {
+      "id": "c3-read1",
+      "title": "3코스 읽기자료 1",
+      "type": "reading",
+      "course": 3,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 130,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 395,
+          "w": 705,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 315,
+          "y": 630,
+          "w": 705,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption",
+          "x": 1115,
+          "y": 905,
+          "w": 527,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1115,
+            "y": 440,
+            "w": 603,
+            "h": 457
+          },
+          "radius": 20
+        }
+      ],
+      "buttons": [
+        {
+          "type": "add",
+          "rect": {
+            "x": 315,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 445,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add2",
+          "place": "up"
+        },
+        {
+          "type": "gmap",
+          "rect": {
+            "x": 451,
+            "y": 156,
+            "w": 55,
+            "h": 55
+          },
+          "key": "gmap"
+        },
+        {
+          "type": "vr",
+          "rect": {
+            "x": 1640,
+            "y": 830,
+            "w": 76,
+            "h": 136
+          },
+          "key": "vr"
+        }
+      ]
+    },
+    {
+      "id": "c3-read2",
+      "title": "3코스 읽기자료 2",
+      "type": "reading",
+      "course": 3,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 395,
+          "w": 700,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 315,
+          "y": 670,
+          "w": 700,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption",
+          "x": 1115,
+          "y": 921,
+          "w": 603,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1115,
+            "y": 434,
+            "w": 604,
+            "h": 458
+          },
+          "radius": 20
+        }
+      ],
+      "buttons": [
+        {
+          "type": "add",
+          "rect": {
+            "x": 315,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 445,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add2",
+          "place": "up"
+        },
+        {
+          "type": "gmap",
+          "rect": {
+            "x": 451,
+            "y": 156,
+            "w": 55,
+            "h": 55
+          },
+          "key": "gmap"
+        },
+        {
+          "type": "inter",
+          "rect": {
+            "x": 575,
+            "y": 905,
+            "w": 170,
+            "h": 39
+          },
+          "key": "inter",
+          "place": "up"
+        }
+      ]
+    },
+    {
+      "id": "c3-intro2",
+      "title": "3코스 개론 2",
+      "type": "intro",
+      "course": 3,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 130,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 375,
+          "w": 1010,
+          "size": 23,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 320,
+          "y": 540,
+          "w": 1010,
+          "size": 23,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s3",
+          "type": "section",
+          "x": 320,
+          "y": 845,
+          "w": 1010,
+          "size": 23,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption1",
+          "x": 1400,
+          "y": 640,
+          "w": 330,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        },
+        {
+          "id": "caption2",
+          "x": 1400,
+          "y": 930,
+          "w": 330,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1400,
+            "y": 415,
+            "w": 330,
+            "h": 218
+          },
+          "radius": 20
+        },
+        {
+          "rect": {
+            "x": 1400,
+            "y": 705,
+            "w": 330,
+            "h": 218
+          },
+          "radius": 20
+        }
+      ]
+    },
+    {
+      "id": "c3-read3",
+      "title": "3코스 읽기자료 3",
+      "type": "reading",
+      "course": 3,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 395,
+          "w": 705,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 315,
+          "y": 630,
+          "w": 705,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption",
+          "x": 1115,
+          "y": 905,
+          "w": 527,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1115,
+            "y": 440,
+            "w": 603,
+            "h": 457
+          },
+          "radius": 20
+        }
+      ],
+      "buttons": [
+        {
+          "type": "add",
+          "rect": {
+            "x": 315,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        },
+        {
+          "type": "gmap",
+          "rect": {
+            "x": 451,
+            "y": 156,
+            "w": 55,
+            "h": 55
+          },
+          "key": "gmap"
+        },
+        {
+          "type": "vr",
+          "rect": {
+            "x": 1640,
+            "y": 830,
+            "w": 76,
+            "h": 136
+          },
+          "key": "vr"
+        }
+      ]
+    },
+    {
+      "id": "c3-read4",
+      "title": "3코스 읽기자료 4",
+      "type": "reading",
+      "course": 3,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 395,
+          "w": 705,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 315,
+          "y": 630,
+          "w": 705,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption",
+          "x": 1115,
+          "y": 905,
+          "w": 527,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1115,
+            "y": 440,
+            "w": 603,
+            "h": 457
+          },
+          "radius": 20
+        }
+      ],
+      "buttons": [
+        {
+          "type": "add",
+          "rect": {
+            "x": 315,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 445,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add2",
+          "place": "up"
+        },
+        {
+          "type": "gmap",
+          "rect": {
+            "x": 451,
+            "y": 156,
+            "w": 55,
+            "h": 55
+          },
+          "key": "gmap"
+        },
+        {
+          "type": "vr",
+          "rect": {
+            "x": 1640,
+            "y": 830,
+            "w": 76,
+            "h": 136
+          },
+          "key": "vr"
+        }
+      ]
+    },
+    {
+      "id": "c3-read5",
+      "title": "3코스 읽기자료 5",
+      "type": "reading",
+      "course": 3,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 395,
+          "w": 700,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 315,
+          "y": 670,
+          "w": 700,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption",
+          "x": 1115,
+          "y": 921,
+          "w": 603,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1115,
+            "y": 434,
+            "w": 604,
+            "h": 458
+          },
+          "radius": 20
+        }
+      ],
+      "buttons": [
+        {
+          "type": "add",
+          "rect": {
+            "x": 315,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 445,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add2",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 575,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add3",
+          "place": "up"
+        },
+        {
+          "type": "gmap",
+          "rect": {
+            "x": 451,
+            "y": 156,
+            "w": 55,
+            "h": 55
+          },
+          "key": "gmap"
+        }
+      ]
+    },
+    {
+      "id": "c3-read6",
+      "title": "3코스 읽기자료 6",
+      "type": "reading",
+      "course": 3,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 395,
+          "w": 710,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 315,
+          "y": 630,
+          "w": 710,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption",
+          "x": 1115,
+          "y": 921,
+          "w": 603,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1115,
+            "y": 434,
+            "w": 604,
+            "h": 458
+          },
+          "radius": 20
+        }
+      ],
+      "buttons": [
+        {
+          "type": "add",
+          "rect": {
+            "x": 315,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 445,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add2",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 575,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add3",
+          "place": "up"
+        },
+        {
+          "type": "gmap",
+          "rect": {
+            "x": 451,
+            "y": 156,
+            "w": 55,
+            "h": 55
+          },
+          "key": "gmap"
+        }
+      ]
+    },
+    {
+      "id": "c3-read7",
+      "title": "3코스 읽기자료 7",
+      "type": "reading",
+      "course": 3,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 395,
+          "w": 705,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 315,
+          "y": 630,
+          "w": 705,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption",
+          "x": 1115,
+          "y": 905,
+          "w": 527,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1115,
+            "y": 440,
+            "w": 603,
+            "h": 457
+          },
+          "radius": 20
+        }
+      ],
+      "buttons": [
+        {
+          "type": "add",
+          "rect": {
+            "x": 315,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 445,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add2",
+          "place": "up"
+        },
+        {
+          "type": "gmap",
+          "rect": {
+            "x": 451,
+            "y": 156,
+            "w": 55,
+            "h": 55
+          },
+          "key": "gmap"
+        },
+        {
+          "type": "vr",
+          "rect": {
+            "x": 1640,
+            "y": 830,
+            "w": 76,
+            "h": 136
+          },
+          "key": "vr"
+        }
+      ]
+    },
+    {
+      "id": "c3-read8",
+      "title": "3코스 읽기자료 8",
+      "type": "reading",
+      "course": 3,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 395,
+          "w": 705,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 315,
+          "y": 630,
+          "w": 705,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption",
+          "x": 1115,
+          "y": 905,
+          "w": 527,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1115,
+            "y": 440,
+            "w": 603,
+            "h": 457
+          },
+          "radius": 20
+        }
+      ],
+      "buttons": [
+        {
+          "type": "add",
+          "rect": {
+            "x": 315,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 445,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add2",
+          "place": "up"
+        },
+        {
+          "type": "gmap",
+          "rect": {
+            "x": 451,
+            "y": 156,
+            "w": 55,
+            "h": 55
+          },
+          "key": "gmap"
+        },
+        {
+          "type": "vr",
+          "rect": {
+            "x": 1640,
+            "y": 830,
+            "w": 76,
+            "h": 136
+          },
+          "key": "vr"
+        }
+      ]
+    },
+    {
+      "id": "c3-intro3",
+      "title": "3코스 개론 3",
+      "type": "intro",
+      "course": 3,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 130,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 375,
+          "w": 1010,
+          "size": 24,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 320,
+          "y": 590,
+          "w": 1010,
+          "size": 24,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s3",
+          "type": "section",
+          "x": 320,
+          "y": 845,
+          "w": 1010,
+          "size": 24,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption1",
+          "x": 1400,
+          "y": 640,
+          "w": 330,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        },
+        {
+          "id": "caption2",
+          "x": 1400,
+          "y": 930,
+          "w": 330,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1400,
+            "y": 415,
+            "w": 330,
+            "h": 218
+          },
+          "radius": 20
+        },
+        {
+          "rect": {
+            "x": 1400,
+            "y": 705,
+            "w": 330,
+            "h": 218
+          },
+          "radius": 20
+        }
+      ]
+    },
+    {
+      "id": "c3-read9",
+      "title": "3코스 읽기자료 9",
+      "type": "reading",
+      "course": 3,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 395,
+          "w": 745,
+          "size": 23,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 315,
+          "y": 660,
+          "w": 745,
+          "size": 23,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption",
+          "x": 1125,
+          "y": 900,
+          "w": 527,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1125,
+            "y": 434,
+            "w": 603,
+            "h": 458
+          },
+          "radius": 20
+        }
+      ],
+      "buttons": [
+        {
+          "type": "add",
+          "rect": {
+            "x": 315,
+            "y": 915,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 445,
+            "y": 915,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add2",
+          "place": "up"
+        },
+       {
+          "type": "ar",
+          "rect": {
+            "x": 1650,
+            "y": 830,
+            "w": 76,
+            "h": 136
+          },
+          "key": "ar"
+        },
+        {
+          "type": "gmap",
+          "rect": {
+            "x": 451,
+            "y": 156,
+            "w": 55,
+            "h": 55
+          },
+          "key": "gmap"
+        }
+      ]
+    },
+    {
+      "id": "c3-read10",
+      "title": "3코스 읽기자료 10",
+      "type": "reading",
+      "course": 3,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 395,
+          "w": 700,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 315,
+          "y": 670,
+          "w": 700,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption",
+          "x": 1115,
+          "y": 921,
+          "w": 604,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1115,
+            "y": 434,
+            "w": 604,
+            "h": 458
+          },
+          "radius": 20
+        }
+      ],
+      "buttons": [
+        {
+          "type": "add",
+          "rect": {
+            "x": 315,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 445,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add2",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 575,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add3",
+          "place": "up"
+        },
+        {
+          "type": "gmap",
+          "rect": {
+            "x": 451,
+            "y": 156,
+            "w": 55,
+            "h": 55
+          },
+          "key": "gmap"
+        }
+      ]
+    },
+    {
+      "id": "c3-read11",
+      "title": "3코스 읽기자료 11",
+      "type": "reading",
+      "course": 3,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 395,
+          "w": 700,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 315,
+          "y": 640,
+          "w": 700,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption",
+          "x": 1115,
+          "y": 921,
+          "w": 604,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1115,
+            "y": 434,
+            "w": 604,
+            "h": 458
+          },
+          "radius": 20
+        }
+      ],
+      "buttons": [
+        {
+          "type": "add",
+          "rect": {
+            "x": 315,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 445,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add2",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 575,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add3",
+          "place": "up"
+        },
+        {
+          "type": "gmap",
+          "rect": {
+            "x": 451,
+            "y": 156,
+            "w": 55,
+            "h": 55
+          },
+          "key": "gmap"
+        }
+      ]
+    },
+    {
+      "id": "c3-quiz1",
+      "title": "3코스 퀴즈 1",
+      "type": "quiz",
+      "course": 3,
+      "available": true,
+      "mapPin": true,
+      "hasText": true,
+      "photoSlot": {
+        "rect": {
+          "x": 400,
+          "y": 479,
+          "w": 512,
+          "h": 491
+        },
+        "radius": 14,
+        "zoom": true
+      },
+      "options": {
+        "x": 1050,
+        "y": 485,
+        "stepY": 123,
+        "w": 677,
+        "h": 81
+      },
+      "answerLayout": {
+        "question": {
+          "x": 425,
+          "y": 375,
+          "w": 1025,
+          "size": 28,
+          "color": "#ffffff",
+          "weight": 700,
+          "align": "center",
+          "lineHeight": 1.4
+        },
+        "label": {
+          "x": 523,
+          "y": 602,
+          "w": 858,
+          "size": 34,
+          "color": "#ffffff",
+          "weight": 700,
+          "align": "center"
+        },
+        "explanation": {
+          "x": 523,
+          "y": 685,
+          "w": 900,
+          "size": 27,
+          "color": "#1d1d1b",
+          "weight": 400,
+          "lineHeight": 1.5
+        }
+      },
+      "qtext": {
+        "x": 292,
+        "y": 210,
+        "w": 1490,
+        "size": 29,
+        "color": "#ffffff",
+        "weight": 600,
+        "lineHeight": 1.35
+      },
+      "questionPanel": {
+        "src": "assets/c3/quiz/quiz1.svg",
+        "x": 248,
+        "y": 46,
+        "w": 1566,
+        "h": 335
+      },
+      "answerPanel": {
+        "src": "assets/c3/quiz/ans1.svg",
+        "x": 214,
+        "y": 120,
+        "w": 1493,
+        "h": 840
+      }
+    },
+    {
+      "id": "c3-quiz2",
+      "title": "3코스 퀴즈 2",
+      "type": "quiz",
+      "course": 3,
+      "available": true,
+      "mapPin": true,
+      "hasText": true,
+      "qtext": {
+        "x": 292,
+        "y": 210,
+        "w": 1490,
+        "size": 30,
+        "color": "#ffffff",
+        "weight": 600,
+        "lineHeight": 1.35
+      },
+      "photoSlot": {
+        "rect": {
+          "x": 260,
+          "y": 479,
+          "w": 715,
+          "h": 491
+        },
+        "radius": 14,
+        "zoom": true
+      },
+      "options": {
+        "x": 1050,
+        "y": 485,
+        "stepY": 123,
+        "w": 677,
+        "h": 81
+      },
+      "answerLayout": {
+        "question": {
+          "x": 425,
+          "y": 375,
+          "w": 1025,
+          "size": 29,
+          "color": "#ffffff",
+          "weight": 700,
+          "align": "center",
+          "lineHeight": 1.4
+        },
+        "label": {
+          "x": 523,
+          "y": 602,
+          "w": 858,
+          "size": 34,
+          "color": "#ffffff",
+          "weight": 700,
+          "align": "center"
+        },
+        "explanation": {
+          "x": 523,
+          "y": 685,
+          "w": 900,
+          "size": 27,
+          "color": "#1d1d1b",
+          "weight": 400,
+          "lineHeight": 1.5
+        }
+      },
+      "questionPanel": {
+        "src": "assets/c3/quiz/quiz2.svg",
+        "x": 248,
+        "y": 46,
+        "w": 1566,
+        "h": 335
+      },
+      "answerPanel": {
+        "src": "assets/c3/quiz/ans2.svg",
+        "x": 214,
+        "y": 120,
+        "w": 1493,
+        "h": 840
+      }
+    },
+    {
+      "id": "c3-quiz3",
+      "title": "3코스 퀴즈 3",
+      "type": "quiz",
+      "course": 3,
+      "available": true,
+      "mapPin": true,
+      "hasText": true,
+      "qtext": {
+        "x": 292,
+        "y": 210,
+        "w": 1475,
+        "size": 26,
+        "color": "#ffffff",
+        "weight": 600,
+        "lineHeight": 1.35
+      },
+      "photoSlot": {
+        "rect": {
+          "x": 260,
+          "y": 479,
+          "w": 715,
+          "h": 491
+        },
+        "radius": 14,
+        "zoom": true
+      },
+      "options": {
+        "x": 1050,
+        "y": 485,
+        "stepY": 123,
+        "w": 677,
+        "h": 81
+      },
+      "answerLayout": {
+        "question": {
+          "x": 425,
+          "y": 375,
+          "w": 1025,
+          "size": 26,
+          "color": "#ffffff",
+          "weight": 700,
+          "align": "center",
+          "lineHeight": 1.4
+        },
+        "label": {
+          "x": 523,
+          "y": 602,
+          "w": 858,
+          "size": 34,
+          "color": "#ffffff",
+          "weight": 700,
+          "align": "center"
+        },
+        "explanation": {
+          "x": 523,
+          "y": 685,
+          "w": 900,
+          "size": 27,
+          "color": "#1d1d1b",
+          "weight": 400,
+          "lineHeight": 1.5
+        }
+      },
+      "questionPanel": {
+        "src": "assets/c3/quiz/quiz3.svg",
+        "x": 248,
+        "y": 46,
+        "w": 1566,
+        "h": 335
+      },
+      "answerPanel": {
+        "src": "assets/c3/quiz/ans3.svg",
+        "x": 214,
+        "y": 120,
+        "w": 1493,
+        "h": 840
+      }
+    },
+    {
+      "id": "c4-map",
+      "title": "4코스 지도",
+      "type": "map",
+      "course": 4,
+      "available": true,
+      "render": "image",
+      "mapPin": false,
+      "mapHotspots": [
+        {
+          "x": 643,
+          "y": 370,
+          "r": 34,
+          "label": "런던",
+          "link": "c4-read1",
+          "card": "assets/c4/map/c4-map_card1.webp"
+        },
+        {
+          "x": 1153,
+          "y": 261,
+          "r": 34,
+          "label": "헤이그",
+          "link": "c4-read3",
+          "card": "assets/c4/map/c4-map_card2.webp"
+        },
+        {
+          "x": 1126,
+          "y": 489,
+          "r": 34,
+          "label": "벨기에",
+          "link": "c4-read7",
+          "card": "assets/c4/map/c4-map_card3.webp"
+        },
+        {
+          "x": 904,
+          "y": 847,
+          "r": 34,
+          "label": "파리",
+          "link": "c4-read4",
+          "card": "assets/c4/map/c4-map_card4.webp"
+        },
+        {
+          "x": 1336,
+          "y": 669,
+          "r": 34,
+          "label": "룩셈부르크",
+          "link": "c4-read6",
+          "card": "assets/c4/map/c4-map_card5.webp"
+        }
+      ],
+      "mapCardRect": {
+        "x": 733,
+        "y": 214,
+        "w": 562,
+        "h": 679
+      },
+      "mapSvg": "assets/c4/map/c4-map.svg",
+      "mapBadge": "유럽",
+      "mapTitle": "외교 활동의 무대와\n6·25 전쟁 참전"
+    },
+
+    {
+      "id": "c4-prestudy",
+      "title": "4코스 사전 학습",
+      "type": "prestudy",
+      "course": 4,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "buttons": [
+        {
+          "type": "vr",
+          "rect": {
+            "x": 320,
+            "y": 800,
+            "w": 80,
+            "h": 136
+          },
+          "key": "vr",
+          "place": "right"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 1600,
+            "y": 955,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 315,
+            "y": 415,
+            "w": 603,
+            "h": 457
+          },
+          "radius": 20
+        }
+      ],
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 126,
+          "w": 130,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 185,
+          "w": 1560,
+          "size": 45,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700,
+          "align": "left"
+        },
+        {
+          "id": "body",
+          "x": 1010,
+          "y": 390,
+          "w": 709,
+          "size": 23,
+          "color": "#0d0e12",
+          "family": "sans",
+          "weight": 400,
+          "align": "left",
+          "lineHeight": 1.5,
+          "multi": true
+        },
+        {
+          "id": "caption",
+          "x": 395,
+          "y": 883,
+          "w": 527,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.3,
+          "align": "center"
+        }
+      ],
+      "badgeTop": 116
+    },
+    {
+      "id": "c4-intro1",
+      "title": "4코스 개론 1",
+      "type": "intro",
+      "course": 4,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 130,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 375,
+          "w": 1010,
+          "size": 24,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 320,
+          "y": 560,
+          "w": 1010,
+          "size": 24,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s3",
+          "type": "section",
+          "x": 320,
+          "y": 755,
+          "w": 1010,
+          "size": 24,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption1",
+          "x": 1400,
+          "y": 640,
+          "w": 330,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        },
+        {
+          "id": "caption2",
+          "x": 1400,
+          "y": 930,
+          "w": 330,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1400,
+            "y": 415,
+            "w": 330,
+            "h": 218
+          },
+          "radius": 20
+        },
+        {
+          "rect": {
+            "x": 1400,
+            "y": 705,
+            "w": 330,
+            "h": 218
+          },
+          "radius": 20
+        }
+      ]
+    },
+    {
+      "id": "c4-read1",
+      "title": "4코스 읽기자료 1",
+      "type": "reading",
+      "course": 4,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 395,
+          "w": 705,
+          "size": 23,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 315,
+          "y": 665,
+          "w": 705,
+          "size": 23,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption",
+          "x": 1115,
+          "y": 905,
+          "w": 527,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1115,
+            "y": 440,
+            "w": 603,
+            "h": 457
+          },
+          "radius": 20
+        }
+      ],
+      "buttons": [
+        {
+          "type": "add",
+          "rect": {
+            "x": 315,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 445,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add2",
+          "place": "up"
+        },
+        {
+          "type": "gmap",
+          "rect": {
+            "x": 451,
+            "y": 156,
+            "w": 55,
+            "h": 55
+          },
+          "key": "gmap"
+        },
+        {
+          "type": "vr",
+          "rect": {
+            "x": 1640,
+            "y": 830,
+            "w": 76,
+            "h": 136
+          },
+          "key": "vr"
+        }
+      ]
+    },
+    {
+      "id": "c4-read2",
+      "title": "4코스 읽기자료 2",
+      "type": "reading",
+      "course": 4,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 1000,
+          "y": 390,
+          "w": 720,
+          "size": 23,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 1000,
+          "y": 670,
+          "w": 720,
+          "size": 23,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption",
+          "x": 315,
+          "y": 875,
+          "w": 603,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 315,
+            "y": 410,
+            "w": 603,
+            "h": 457
+          },
+          "radius": 20
+        }
+      ],
+      "buttons": [
+        {
+          "type": "add",
+          "rect": {
+            "x": 1470,
+            "y": 935,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 1600,
+            "y": 935,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add2",
+          "place": "up"
+        },
+        {
+          "type": "gmap",
+          "rect": {
+            "x": 451,
+            "y": 156,
+            "w": 55,
+            "h": 55
+          },
+          "key": "gmap"
+        }
+      ]
+    },
+    {
+      "id": "c4-read3",
+      "title": "4코스 읽기자료 3",
+      "type": "reading",
+      "course": 4,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 395,
+          "w": 700,
+          "size": 24,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 315,
+          "y": 650,
+          "w": 700,
+          "size": 24,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption",
+          "x": 1115,
+          "y": 921,
+          "w": 527,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1115,
+            "y": 434,
+            "w": 604,
+            "h": 458
+          },
+          "radius": 20
+        }
+      ],
+      "buttons": [
+        {
+          "type": "add",
+          "rect": {
+            "x": 315,
+            "y": 925,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 445,
+            "y": 925,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add2",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 575,
+            "y": 925,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add3",
+          "place": "up"
+        },
+        {
+          "type": "ar",
+          "rect": {
+            "x": 1640,
+            "y": 830,
+            "w": 76,
+            "h": 136
+          },
+          "key": "ar",
+          "place": "up"
+        },
+
+        {
+          "type": "gmap",
+          "rect": {
+            "x": 451,
+            "y": 156,
+            "w": 55,
+            "h": 55
+          },
+          "key": "gmap"
+        }
+      ]
+    },
+    {
+      "id": "c4-intro2",
+      "title": "4코스 개론 2",
+      "type": "intro",
+      "course": 4,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 130,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 375,
+          "w": 1010,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 320,
+          "y": 590,
+          "w": 1010,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s3",
+          "type": "section",
+          "x": 320,
+          "y": 845,
+          "w": 1010,
+          "size": 25,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption1",
+          "x": 1400,
+          "y": 640,
+          "w": 330,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        },
+        {
+          "id": "caption2",
+          "x": 1400,
+          "y": 930,
+          "w": 330,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1400,
+            "y": 415,
+            "w": 330,
+            "h": 218
+          },
+          "radius": 20
+        },
+        {
+          "rect": {
+            "x": 1400,
+            "y": 705,
+            "w": 330,
+            "h": 218
+          },
+          "radius": 20
+        }
+      ]
+    },
+    {
+      "id": "c4-read4",
+      "title": "4코스 읽기자료 4",
+      "type": "reading",
+      "course": 4,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 385,
+          "w": 705,
+          "size": 23,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 315,
+          "y": 660,
+          "w": 705,
+          "size": 23,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption",
+          "x": 1115,
+          "y": 905,
+          "w": 527,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1115,
+            "y": 440,
+            "w": 603,
+            "h": 457
+          },
+          "radius": 20
+        }
+      ],
+      "buttons": [
+        {
+          "type": "add",
+          "rect": {
+            "x": 315,
+            "y": 935,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 445,
+            "y": 935,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add2",
+          "place": "up"
+        },
+        {
+          "type": "gmap",
+          "rect": {
+            "x": 451,
+            "y": 156,
+            "w": 55,
+            "h": 55
+          },
+          "key": "gmap"
+        },
+        {
+          "type": "vr",
+          "rect": {
+            "x": 1640,
+            "y": 830,
+            "w": 76,
+            "h": 136
+          },
+          "key": "vr"
+        }
+      ]
+    },
+    {
+      "id": "c4-read5",
+      "title": "4코스 읽기자료 5",
+      "type": "reading",
+      "course": 4,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 395,
+          "w": 705,
+          "size": 23,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 315,
+          "y": 660,
+          "w": 705,
+          "size": 23,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption",
+          "x": 1115,
+          "y": 905,
+          "w": 527,
+          "size": 19,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1115,
+            "y": 440,
+            "w": 603,
+            "h": 457
+          },
+          "radius": 20
+        }
+      ],
+      "buttons": [
+        {
+          "type": "add",
+          "rect": {
+            "x": 315,
+            "y": 935,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 445,
+            "y": 935,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add2",
+          "place": "up"
+        },
+        {
+          "type": "gmap",
+          "rect": {
+            "x": 451,
+            "y": 156,
+            "w": 55,
+            "h": 55
+          },
+          "key": "gmap"
+        },
+        {
+          "type": "vr",
+          "rect": {
+            "x": 1640,
+            "y": 830,
+            "w": 76,
+            "h": 136
+          },
+          "key": "vr"
+        }
+      ]
+    },
+    {
+      "id": "c4-intro3",
+      "title": "4코스 개론 3",
+      "type": "intro",
+      "course": 4,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 130,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 375,
+          "w": 1010,
+          "size": 23,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 320,
+          "y": 585,
+          "w": 1010,
+          "size": 23,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s3",
+          "type": "section",
+          "x": 320,
+          "y": 835,
+          "w": 1010,
+          "size": 23,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption1",
+          "x": 1400,
+          "y": 640,
+          "w": 330,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        },
+        {
+          "id": "caption2",
+          "x": 1400,
+          "y": 930,
+          "w": 330,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1400,
+            "y": 415,
+            "w": 330,
+            "h": 218
+          },
+          "radius": 20
+        },
+        {
+          "rect": {
+            "x": 1400,
+            "y": 705,
+            "w": 330,
+            "h": 218
+          },
+          "radius": 20
+        }
+      ]
+    },
+    {
+      "id": "c4-read6",
+      "title": "4코스 읽기자료 6",
+      "type": "reading",
+      "course": 4,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 375,
+          "w": 700,
+          "size": 24,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 315,
+          "y": 660,
+          "w": 700,
+          "size": 24,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption",
+          "x": 1115,
+          "y": 921,
+          "w": 604,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1115,
+            "y": 434,
+            "w": 604,
+            "h": 458
+          },
+          "radius": 20
+        }
+      ],
+      "buttons": [
+        {
+          "type": "add",
+          "rect": {
+            "x": 315,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 445,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add2",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 575,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add3",
+          "place": "up"
+        },
+        {
+          "type": "gmap",
+          "rect": {
+            "x": 451,
+            "y": 156,
+            "w": 55,
+            "h": 55
+          },
+          "key": "gmap"
+        }
+      ]
+    },
+    {
+      "id": "c4-read7",
+      "title": "4코스 읽기자료 7",
+      "type": "reading",
+      "course": 4,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 385,
+          "w": 700,
+          "size": 24,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 315,
+          "y": 650,
+          "w": 700,
+          "size": 24,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption",
+          "x": 1115,
+          "y": 921,
+          "w": 604,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1115,
+            "y": 434,
+            "w": 604,
+            "h": 458
+          },
+          "radius": 20
+        }
+      ],
+      "buttons": [
+        {
+          "type": "add",
+          "rect": {
+            "x": 315,
+            "y": 935,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 445,
+            "y": 935,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add2",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 575,
+            "y": 935,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add3",
+          "place": "up"
+        },
+        {
+          "type": "gmap",
+          "rect": {
+            "x": 451,
+            "y": 156,
+            "w": 55,
+            "h": 55
+          },
+          "key": "gmap"
+        }
+      ]
+    },
+    {
+      "id": "c4-read8",
+      "title": "4코스 읽기자료 8",
+      "type": "reading",
+      "course": 4,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 395,
+          "w": 700,
+          "size": 23,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 315,
+          "y": 650,
+          "w": 700,
+          "size": 23,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption",
+          "x": 1115,
+          "y": 921,
+          "w": 604,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1115,
+            "y": 434,
+            "w": 604,
+            "h": 458
+          },
+          "radius": 20
+        }
+      ],
+      "buttons": [
+        {
+          "type": "add",
+          "rect": {
+            "x": 315,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 445,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add2",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 575,
+            "y": 905,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add3",
+          "place": "up"
+        },
+        {
+          "type": "gmap",
+          "rect": {
+            "x": 451,
+            "y": 156,
+            "w": 55,
+            "h": 55
+          },
+          "key": "gmap"
+        },
+        {
+          "type": "inter",
+          "rect": {
+            "x": 705,
+            "y": 905,
+            "w": 170,
+            "h": 39
+          },
+          "key": "inter",
+          "place": "up"
+        }
+      ]
+    },
+    {
+      "id": "c4-read9",
+      "title": "4코스 읽기자료 9",
+      "type": "reading",
+      "course": 4,
+      "available": true,
+      "render": "image",
+      "mapPin": true,
+      "hasText": true,
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        },
+        {
+          "id": "s1",
+          "type": "section",
+          "x": 315,
+          "y": 395,
+          "w": 700,
+          "size": 23,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "s2",
+          "type": "section",
+          "x": 315,
+          "y": 640,
+          "w": 700,
+          "size": 23,
+          "color": "#1d1d1b",
+          "family": "sans",
+          "weight": 400,
+          "lineHeight": 1.5
+        },
+        {
+          "id": "caption",
+          "x": 1115,
+          "y": 921,
+          "w": 604,
+          "size": 20,
+          "color": "#333333",
+          "family": "sans",
+          "weight": 400,
+          "align": "center"
+        }
+      ],
+      "photoSlots": [
+        {
+          "rect": {
+            "x": 1115,
+            "y": 434,
+            "w": 604,
+            "h": 458
+          },
+          "radius": 20
+        }
+      ],
+      "buttons": [
+        {
+          "type": "add",
+          "rect": {
+            "x": 315,
+            "y": 925,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add1",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 445,
+            "y": 925,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add2",
+          "place": "up"
+        },
+        {
+          "type": "add",
+          "rect": {
+            "x": 575,
+            "y": 925,
+            "w": 118,
+            "h": 39
+          },
+          "key": "add3",
+          "place": "up"
+        },
+        {
+          "type": "gmap",
+          "rect": {
+            "x": 451,
+            "y": 156,
+            "w": 55,
+            "h": 55
+          },
+          "key": "gmap"
+        }
+      ]
+    },
+    {
+      "id": "c4-quiz1",
+      "title": "4코스 퀴즈 1",
+      "type": "quiz",
+      "course": 4,
+      "available": true,
+      "mapPin": true,
+      "hasText": true,
+      "photoSlot": {
+        "rect": {
+          "x": 260,
+          "y": 479,
+          "w": 715,
+          "h": 491
+        },
+        "radius": 14,
+        "zoom": true
+      },
+      "options": {
+        "x": 1050,
+        "y": 485,
+        "stepY": 123,
+        "w": 677,
+        "h": 81
+      },
+      "answerLayout": {
+        "question": {
+          "x": 425,
+          "y": 375,
+          "w": 1025,
+          "size": 26,
+          "color": "#ffffff",
+          "weight": 700,
+          "align": "center",
+          "lineHeight": 1.4
+        },
+        "label": {
+          "x": 523,
+          "y": 602,
+          "w": 858,
+          "size": 34,
+          "color": "#ffffff",
+          "weight": 700,
+          "align": "center"
+        },
+        "explanation": {
+          "x": 523,
+          "y": 685,
+          "w": 900,
+          "size": 27,
+          "color": "#1d1d1b",
+          "weight": 400,
+          "lineHeight": 1.4
+        }
+      },
+      "qtext": {
+        "x": 292,
+        "y": 210,
+        "w": 1490,
+        "size": 28,
+        "color": "#ffffff",
+        "weight": 600,
+        "lineHeight": 1.35
+      },
+      "questionPanel": {
+        "src": "assets/c4/quiz/quiz1.svg",
+        "x": 248,
+        "y": 46,
+        "w": 1566,
+        "h": 335
+      },
+      "answerPanel": {
+        "src": "assets/c4/quiz/ans1.svg",
+        "x": 214,
+        "y": 120,
+        "w": 1493,
+        "h": 840
+      }
+    },
+    {
+      "id": "c4-quiz2",
+      "title": "4코스 퀴즈 2",
+      "type": "quiz",
+      "course": 4,
+      "available": true,
+      "mapPin": true,
+      "hasText": true,
+      "qtext": {
+        "x": 292,
+        "y": 210,
+        "w": 1490,
+        "size": 28,
+        "color": "#ffffff",
+        "weight": 600,
+        "lineHeight": 1.35
+      },
+      "photoSlot": {
+        "rect": {
+          "x": 454,
+          "y": 479,
+          "w": 403,
+          "h": 491
+        },
+        "radius": 14,
+        "zoom": true
+      },
+      "options": {
+        "x": 1050,
+        "y": 485,
+        "stepY": 123,
+        "w": 677,
+        "h": 81
+      },
+      "answerLayout": {
+        "question": {
+          "x": 425,
+          "y": 375,
+          "w": 1025,
+          "size": 27,
+          "color": "#ffffff",
+          "weight": 700,
+          "align": "center",
+          "lineHeight": 1.4
+        },
+        "label": {
+          "x": 523,
+          "y": 602,
+          "w": 858,
+          "size": 34,
+          "color": "#ffffff",
+          "weight": 700,
+          "align": "center"
+        },
+        "explanation": {
+          "x": 523,
+          "y": 685,
+          "w": 900,
+          "size": 26,
+          "color": "#1d1d1b",
+          "weight": 400,
+          "lineHeight": 1.5
+        }
+      },
+      "questionPanel": {
+        "src": "assets/c4/quiz/quiz2.svg",
+        "x": 248,
+        "y": 46,
+        "w": 1566,
+        "h": 335
+      },
+      "answerPanel": {
+        "src": "assets/c4/quiz/ans2.svg",
+        "x": 214,
+        "y": 120,
+        "w": 1493,
+        "h": 840
+      }
+    },
+    {
+      "id": "c4-quiz3",
+      "title": "4코스 퀴즈 3",
+      "type": "quiz",
+      "course": 4,
+      "available": true,
+      "mapPin": true,
+      "hasText": true,
+      "qtext": {
+        "x": 292,
+        "y": 210,
+        "w": 1475,
+        "size": 28,
+        "color": "#ffffff",
+        "weight": 600,
+        "lineHeight": 1.35
+      },
+      "options": {
+        "x": 650,
+        "y": 485,
+        "stepY": 123,
+        "w": 677,
+        "h": 81
+      },
+      "answerLayout": {
+        "question": {
+          "x": 425,
+          "y": 375,
+          "w": 1025,
+          "size": 28,
+          "color": "#ffffff",
+          "weight": 700,
+          "align": "center",
+          "lineHeight": 1.4
+        },
+        "label": {
+          "x": 523,
+          "y": 602,
+          "w": 858,
+          "size": 34,
+          "color": "#ffffff",
+          "weight": 700,
+          "align": "center"
+        },
+        "explanation": {
+          "x": 523,
+          "y": 685,
+          "w": 900,
+          "size": 27,
+          "color": "#1d1d1b",
+          "weight": 400,
+          "lineHeight": 1.5
+        }
+      },
+      "questionPanel": {
+        "src": "assets/c4/quiz/quiz3.svg",
+        "x": 248,
+        "y": 46,
+        "w": 1566,
+        "h": 335
+      },
+      "answerPanel": {
+        "src": "assets/c4/quiz/ans3.svg",
+        "x": 214,
+        "y": 120,
+        "w": 1493,
+        "h": 840
+      }
+    },
+    {
+      "id": "note",
+      "title": "탐방노트",
+      "type": "note",
+      "course": null,
+      "available": true,
+      "render": "image",
+      "common": true,
+      "mapPin": false,
+      "note": {
+        "editor": {
+          "x": 232,
+          "y": 262,
+          "w": 950,
+          "h": 696
+        },
+        "scrap": {
+          "x": 1218,
+          "y": 262,
+          "w": 594,
+          "h": 696
+        },
+        "pdfLabel": "PDF 출력",
+        "header": "탐방 후기 작성하기",
+        "scrapLabel": "페이지 스크랩"
+      }
+    }
+  ]
+}

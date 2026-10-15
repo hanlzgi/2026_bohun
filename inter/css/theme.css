@@ -1,0 +1,240 @@
+@charset "utf-8";
+/* ==========================================================================
+   theme.css — 디자인 값만 모은 파일. 색/폰트/라운드를 바꾸려면 여기만 본다.
+   CSS 변수(var)를 쓰지 않는다: 구형 브라우저(IE11 등) 호환을 위해 실값 사용.
+   배경은 이미지가 아니라 전부 CSS 그라데이션이다(교체·확대에 자유롭다).
+   ========================================================================== */
+
+/* --- 웹폰트 : 원본 PPT의 Pretendard.
+       실제 배치된 파일은 font/woff2/PretendardVariable.woff2 (가변 폰트) 하나뿐이다.
+       400/700 을 따로 등록하지 않고 45~920 굵기 축을 한 번에 등록한다.
+       가변 폰트를 못 읽는 구형 브라우저(IE11 등)는 아래 body 의
+       시스템 고딕 폴백으로 자동 대체된다. --- */
+@font-face {
+  font-family: "PretendardLocal";
+  font-style: normal;
+  font-weight: 45 920;
+  font-display: swap;
+  src: url("../font/woff2/PretendardVariable.woff2") format("woff2-variations"),
+       url("../font/woff2/PretendardVariable.woff2") format("woff2");
+}
+
+body {
+  font-family: "PretendardLocal", "Pretendard", "Apple SD Gothic Neo",
+               "맑은 고딕", "Malgun Gothic", "돋움", Dotum, sans-serif;
+  background: #16121f;
+  color: #2a2150;
+}
+
+/* --- 무대 배경 : 연한 라벤더 → 핑크 그라데이션 --- */
+#stage {
+  background: #d8d0ec;                                   /* 구형 폴백 */
+  background: -webkit-gradient(linear, left top, right bottom,
+              from(#d9d2ee), color-stop(38%, #cec5e8), color-stop(74%, #e5d7ea), to(#f5e8ee));
+  background: -webkit-linear-gradient(top left, #d9d2ee 0%, #cec5e8 38%, #e5d7ea 74%, #f5e8ee 100%);
+  background:    -moz-linear-gradient(top left, #d9d2ee 0%, #cec5e8 38%, #e5d7ea 74%, #f5e8ee 100%);
+  background:      -o-linear-gradient(top left, #d9d2ee 0%, #cec5e8 38%, #e5d7ea 74%, #f5e8ee 100%);
+  background:         linear-gradient(to bottom right, #d9d2ee 0%, #cec5e8 38%, #e5d7ea 74%, #f5e8ee 100%);
+}
+
+/* --- 영상 무대 : 흰 테두리 + 그림자 --- */
+#screen {
+  -webkit-box-shadow: 0 1.4rem 4rem rgba(52, 38, 90, .28);
+          box-shadow: 0 1.4rem 4rem rgba(52, 38, 90, .28);
+}
+
+/* --- 프레임 장식 (원본의 전체화면 PNG 오버레이를 CSS로 대체) --- */
+.layer-frame {
+  -webkit-box-shadow: inset 0 0 16rem 5rem rgba(206, 196, 232, .3);
+          box-shadow: inset 0 0 16rem 5rem rgba(206, 196, 232, .3);
+}
+
+/* --- 머리글 : 연도 배지 + 제목 (좌측 정렬, 배경 없는 실제 텍스트) --- */
+.node-badge {
+  color: #ffffff;
+  background: #3b2f63;
+  border-radius: 999px;
+}
+.node-title { color: #241c48; }
+
+/* --- 공통 버튼 --- */
+.btn {
+  color: #33285c;
+  background: #ffffff;
+  border-radius: 999px;
+  -webkit-box-shadow: 0 .5rem 1.6rem rgba(52, 38, 90, .22);
+          box-shadow: 0 .5rem 1.6rem rgba(52, 38, 90, .22);
+}
+.btn:hover   { background: #f4efff; }
+.btn:active  { background: #e7dcff; }
+.btn:focus   { outline: .3rem solid #7d67c8; outline-offset: .3rem; }
+
+/* 누른 동안은 그림자를 줄여 '내려앉은' 느낌을 준다 (위치 이동은 engine.css) */
+.btn:active {
+  -webkit-box-shadow: 0 .2rem .7rem rgba(52, 38, 90, .26);
+          box-shadow: 0 .2rem .7rem rgba(52, 38, 90, .26);
+}
+
+/* --- 마우스로 눌렀을 때 남는 테두리 없애기 ---
+   :focus-visible 은 '키보드로 이동해 온 포커스'만 잡는다. 그래서 마우스
+   클릭 뒤에는 테두리가 사라지고, Tab 으로 옮겨 다닐 때는 그대로 보인다.
+   :focus-visible 을 모르는 구형 브라우저는 아래 규칙을 통째로 무시하므로
+   예전처럼 항상 테두리가 보인다 — 접근성이 먼저 깨지지 않는 쪽으로 남긴다. */
+.btn:focus:not(:focus-visible),
+.vbtn:focus:not(:focus-visible),
+.menu-card:focus:not(:focus-visible),
+.vbar:focus:not(:focus-visible),
+.vvolbar:focus:not(:focus-visible) { outline: none; }
+
+.btn-ghost {
+  color: #ffffff;
+  background: rgba(45, 34, 82, .5);
+  border: .18rem solid rgba(255, 255, 255, .5);
+}
+.btn-ghost:hover { background: rgba(45, 34, 82, .72); }
+
+/* 홈 : 보라색 라운드 사각형 + 흰 집 아이콘
+   .abtn-home 은 브라우저 왼쪽 위에 붙는 같은 버튼이다. 생김새를 함께 쓰므로
+   여기 값 하나만 고치면 둘 다 바뀐다(둥글기 50% 는 그대로 유지). */
+.btn-home,
+.abtn-home {
+  background: #6d5cb8;
+  border: 0;
+  border-radius: 50%;
+  -webkit-box-shadow: 0 .7rem 1.8rem rgba(52, 38, 90, .34);
+          box-shadow: 0 .7rem 1.8rem rgba(52, 38, 90, .34);
+}
+.btn-home:hover,  .abtn-home:hover  { background: #7e6cca; }
+.btn-home:active, .abtn-home:active { background: #5f4fa6; }
+.ic-home:before  { border-bottom-color: #ffffff; }   /* 지붕 */
+.ic-home:after   { background: #ffffff; }            /* 몸통 */
+
+/* 전체화면·햄버거 : 옅은 원형 + 어두운 아이콘 */
+.btn-fullscreen,
+.abtn-bars {
+  background: rgba(255, 255, 255, .5);
+  border: 0;
+  border-radius: 50%;
+  -webkit-box-shadow: none; box-shadow: none;
+}
+.btn-fullscreen:hover,
+.abtn-bars:hover { background: rgba(255, 255, 255, .82); }
+.abtn-bars:active { background: rgba(255, 255, 255, .95); }
+
+/* 햄버거 세 줄 */
+.ic-bars,
+.ic-bars:before,
+.ic-bars:after { background: #4a3d7c; }
+
+/* 안내 고지 : 옅은 흰 알약 + 흐린 보라 글자 */
+.appfoot {
+  color: #5b4f86;
+  background: rgba(255, 255, 255, .55);
+  border-radius: 999px;
+}
+
+/* 펼쳐지는 목록 : 흰 카드 + 보라 글자 */
+.appmenu {
+  background: #ffffff;
+  border-radius: 2.2rem;
+  -webkit-box-shadow: 0 1.2rem 3.6rem rgba(28, 18, 58, .34);
+          box-shadow: 0 1.2rem 3.6rem rgba(28, 18, 58, .34);
+}
+.ambtn {
+  color: #33285c;
+  background: none;
+}
+.ambtn:hover  { background: #f4efff; }
+.ambtn:active { background: #e7dcff; }
+.ambtn:focus  { outline: .3rem solid #7d67c8; outline-offset: -.4rem; }
+.abtn:focus   { outline: .3rem solid #7d67c8; outline-offset: .3rem; }
+
+/* 마우스로 눌렀을 때 남는 테두리는 없앤다(키보드 포커스는 남긴다) */
+.abtn:focus:not(:focus-visible),
+.ambtn:focus:not(:focus-visible) { outline: none; }
+.btn-fullscreen .ic-fs:before,
+.btn-fullscreen .ic-fs:after,
+.btn-fullscreen .ic-fs i:before,
+.btn-fullscreen .ic-fs i:after { border-color: #4a3d7c; }
+
+/* --- 선택 허브 --- */
+/* 페이지 위에 한 겹 얹힌 느낌을 주는 오른쪽 그림자.
+   패널과 함께 움직이므로 슬라이드 인/아웃 할 때도 자연스럽다. */
+.choice-panel {
+  -webkit-box-shadow: 1.6rem 0 5.5rem rgba(28, 18, 58, .42);
+          box-shadow: 1.6rem 0 5.5rem rgba(28, 18, 58, .42);
+  background: #9a86d2;                                   /* 구형 폴백 */
+  background: -webkit-gradient(linear, left top, right bottom,
+              from(#8676cc), color-stop(46%, #a28cd5), to(#cbb0dc));
+  background: -webkit-linear-gradient(top left, #8676cc 0%, #a28cd5 46%, #cbb0dc 100%);
+  background:    -moz-linear-gradient(top left, #8676cc 0%, #a28cd5 46%, #cbb0dc 100%);
+  background:      -o-linear-gradient(top left, #8676cc 0%, #a28cd5 46%, #cbb0dc 100%);
+  background:         linear-gradient(to bottom right, #8676cc 0%, #a28cd5 46%, #cbb0dc 100%);
+}
+.choice-mark {
+  color: #5744a2;
+  background: #ffffff;
+  -webkit-box-shadow: 0 .6rem 1.8rem rgba(40, 28, 74, .26);
+          box-shadow: 0 .6rem 1.8rem rgba(40, 28, 74, .26);
+}
+.choice-question { color: #241c48; }
+.choice-list .btn { font-weight: 500; }
+.choice-list .btn:active {
+  -webkit-box-shadow: 0 .2rem .8rem rgba(40, 28, 74, .3);
+          box-shadow: 0 .2rem .8rem rgba(40, 28, 74, .3);
+}
+.choice-list .btn:before { background: #8b7bc4; }      /* → 화살대 */
+.choice-list .btn:after  { border-color: #8b7bc4; }    /* → 화살촉 */
+
+/* --- 통합 메뉴 --- */
+.menu-title { color: #241c48; }
+.menu-sub   { color: #4a3f78; }
+.menu-hint  { color: #6b5f96; }
+
+.menu-card {
+  background: #ffffff;
+  -webkit-box-shadow: 0 1rem 2.6rem rgba(52, 38, 90, .22);
+          box-shadow: 0 1rem 2.6rem rgba(52, 38, 90, .22);
+}
+.menu-card:hover,
+.menu-card:focus {
+  -webkit-box-shadow: 0 1.6rem 3.6rem rgba(52, 38, 90, .34);
+          box-shadow: 0 1.6rem 3.6rem rgba(52, 38, 90, .34);
+  -webkit-transform: translateY(-.8rem);
+      -ms-transform: translateY(-.8rem);
+          transform: translateY(-.8rem);
+}
+.menu-thumb  { background: #2a2140; }
+.menu-badge  { color: #ffffff; background: #6d5cb8; }
+.menu-off    { color: #ffffff; background: #9b93b4; }
+.menu-label  { color: #241c48; }
+.menu-desc   { color: #5b5183; }
+
+/* 준비되지 않은 편은 흐리게 */
+.menu-card.is-off { background: rgba(255, 255, 255, .58); }
+.menu-card.is-off:hover {
+  -webkit-transform: none; -ms-transform: none; transform: none;
+  -webkit-box-shadow: 0 1rem 2.6rem rgba(52, 38, 90, .22);
+          box-shadow: 0 1rem 2.6rem rgba(52, 38, 90, .22);
+}
+.menu-card.is-off .menu-label { color: #6f668f; }
+.menu-card.is-off .menu-thumb { background: #b9b0d2; }
+
+/* --- 재생 컨트롤바 : 어두운 스크림 위 흰 아이콘 --- */
+.vctrl {
+  background: rgba(12, 9, 24, .8);                       /* 구형 폴백 */
+  background: -webkit-gradient(linear, left top, left bottom,
+              from(rgba(12, 9, 24, 0)), color-stop(34%, rgba(12, 9, 24, .6)), to(rgba(12, 9, 24, .92)));
+  background: -webkit-linear-gradient(top, rgba(12, 9, 24, 0) 0%, rgba(12, 9, 24, .6) 34%, rgba(12, 9, 24, .92) 100%);
+  background:    -moz-linear-gradient(top, rgba(12, 9, 24, 0) 0%, rgba(12, 9, 24, .6) 34%, rgba(12, 9, 24, .92) 100%);
+  background:         linear-gradient(180deg, rgba(12, 9, 24, 0) 0%, rgba(12, 9, 24, .6) 34%, rgba(12, 9, 24, .92) 100%);
+}
+.vbar-track, .vvol-track { background: rgba(255, 255, 255, .32); }
+.vbar-fill,  .vvol-fill  { background: #ffd76a; }
+.vbar-knob,  .vvol-knob  { background: #ffffff; }
+.vbtn        { color: #ffffff; background: rgba(255, 255, 255, .17); }
+.vbtn:hover  { background: rgba(255, 255, 255, .32); }
+.vbtn:focus  { outline: .25rem solid #ffd76a; outline-offset: .2rem; }
+.vrate.on    { background: #ffd76a; color: #2c2350; }
+.vrate.on:hover { background: #ffe28f; }
+.vtime       { color: #ffffff; }

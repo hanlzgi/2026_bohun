@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="format-detection" content="telephone=no">
+<title>인터랙티브 영상</title>
+<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/engine.css">
+</head>
+<body>
+
+<div id="app" class="mode-menu">
+  <div id="stage">
+
+    <!-- z1 : 배경 (theme.css 의 #stage 그라데이션) -->
+    <div class="layer layer-bg"><img id="bg-img" alt=""></div>
+
+    <!-- z2 : 영상 무대 -->
+    <div class="layer layer-stage">
+     <!-- 가운데 16:9 틀. 이 안의 좌표는 전부 '틀 기준 %' 라 브라우저 크기와 무관하다. -->
+     <div class="frame" id="frame-v">
+      <div id="screen">
+        <video id="video" playsinline webkit-playsinline preload="auto"></video>
+        <button type="button" id="tap-to-play" class="tap-to-play">
+          <span class="tap-icon"></span><span class="tap-text">재생</span>
+        </button>
+
+        <!-- 재생 컨트롤 : 영상 위에 마우스를 올리면(터치는 탭) 나타난다.
+             아이콘은 전부 CSS 도형 — 웹폰트/이미지에 의존하지 않는다. -->
+        <div id="vctrl" class="vctrl" aria-hidden="true">
+
+          <div id="vbar" class="vbar" tabindex="0" role="slider"
+               aria-label="재생 위치" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <span class="vbar-track"></span>
+            <span id="vbar-fill" class="vbar-fill"></span>
+            <span id="vbar-knob" class="vbar-knob"></span>
+          </div>
+
+          <div class="vrow">
+            <button type="button" id="v-toggle" class="vbtn vbtn-icon" aria-label="재생" title="재생">
+              <span class="vi"></span>
+            </button>
+            <button type="button" id="v-replay" class="vbtn" title="처음부터 다시 재생">다시 보기</button>
+            <span id="v-time" class="vtime">0:00 / 0:00</span>
+
+            <span class="vright">
+              <span class="vspeed" role="group" aria-label="재생 속도">
+                <button type="button" class="vbtn vrate" data-rate="0.5" aria-pressed="false">0.5&#215;</button>
+                <button type="button" class="vbtn vrate on" data-rate="1" aria-pressed="true">1&#215;</button>
+                <button type="button" class="vbtn vrate" data-rate="2" aria-pressed="false">2&#215;</button>
+              </span>
+
+              <span class="vvol">
+                <button type="button" id="v-mute" class="vbtn vbtn-icon vbtn-vol"
+                        aria-label="음소거" title="음소거" aria-pressed="false">
+                  <span class="ic-vol"><i></i><b></b></span>
+                </button>
+                <span id="vvolbar" class="vvolbar" tabindex="0" role="slider"
+                      aria-label="음량" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100">
+                  <span class="vvol-track"></span>
+                  <span id="vvol-fill" class="vvol-fill"></span>
+                  <span id="vvol-knob" class="vvol-knob"></span>
+                </span>
+              </span>
+
+              <button type="button" id="v-full" class="vbtn vbtn-icon"
+                      aria-label="전체화면" title="전체화면">
+                <span class="ic-fs"><i></i></span>
+              </button>
+            </span>
+          </div>
+
+        </div>
+      </div>
+     </div>
+    </div>
+
+    <!-- z3 : 프레임 장식 -->
+    <div class="layer layer-frame"></div>
+
+    <!-- z4 : 딤드 (브라우저 전체를 덮는다) -->
+    <div class="layer layer-dim" id="dim"></div>
+
+    <!-- z5 : UI -->
+    <div class="layer layer-ui">
+
+     <!-- 가운데 16:9 틀 안에 놓이는 UI. 좌표는 지금까지와 똑같다. -->
+     <div class="frame frame-ui" id="frame-u">
+
+      <!-- 통합 메뉴 : 어떤 편을 볼지 고르는 화면 -->
+      <div id="menu" class="menu" aria-hidden="true">
+        <div class="menu-head">
+          <h1 id="menu-title" class="menu-title"></h1>
+          <p id="menu-sub" class="menu-sub"></p>
+        </div>
+        <ul id="menu-list" class="menu-list"></ul>
+        <p id="menu-hint" class="menu-hint"></p>
+      </div>
+
+      <!-- 머리글 : 배지 + 제목. 아래쪽 정렬이라 배지가 없으면 제목만 같은 자리에 남는다 -->
+      <div class="node-head">
+        <div class="node-head-in">
+          <span id="node-badge" class="node-badge"></span>
+          <h1 id="node-title" class="node-title"></h1>
+        </div>
+      </div>
+
+      <div id="chrome" class="chrome"></div>
+
+      <div id="actions" class="actions"></div>
+
+     </div><!-- /.frame-ui -->
+
+      <!-- ====================================================== 앱 바
+           16:9 틀이 아니라 '브라우저 화면' 모서리에 붙는 버튼들.
+           그래서 화면이 넓어지면 좌우 끝까지 벌어진다.
+           ================================================================ -->
+      <div id="appbar" class="appbar">
+
+        <button type="button" id="btn-home" class="abtn abtn-home"
+                aria-label="메뉴로" title="메뉴로">
+          <span class="ic ic-home"></span>
+        </button>
+
+        <div class="appmenu-wrap">
+          <button type="button" id="btn-bars" class="abtn abtn-bars"
+                  aria-label="메뉴 열기" title="메뉴" aria-haspopup="true" aria-expanded="false">
+            <span class="ic ic-bars"></span>
+          </button>
+
+          <!-- 햄버거를 누르면 이 목록이 버튼 아래로 펼쳐진다.
+               ★ 문구와 주소는 여기서 바로 고치면 된다. 항목을 더 넣어도 된다.
+                  data-action="fullscreen" 인 것만 엔진이 가로채고, 나머지는 그냥 링크다. -->
+          <ul id="appmenu" class="appmenu" role="menu" data-open="0" aria-hidden="true">
+            <li role="none">
+              <button type="button" role="menuitem" class="ambtn" data-action="fullscreen">전체화면</button>
+            </li>
+            <li role="none">
+              <a role="menuitem" class="ambtn" target="_blank" rel="noopener"
+                 href="https://hanlzgi.github.io/design/">교재로 이동하기</a>
+            </li>
+            <li role="none">
+              <a role="menuitem" class="ambtn" target="_blank" rel="noopener"
+                 href="https://culture.mpva.go.kr/">보훈문화 종합포털 가기</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- ================================================== 안내 고지
+           화면 아래 가운데에 항상 붙어 있는 한 줄.
+           ★ 문구는 여기서 바로 고치면 된다. (자리·색은 css 의 .appfoot)
+           클릭은 통과시키므로 아래에 있는 것을 가리지 않는다.
+           ============================================================ -->
+      <footer id="appfoot" class="appfoot">※ 모든 영상은 생성형AI로 제작되었습니다.</footer>
+
+      <!-- 선택 허브 : 16:9 틀이 아니라 브라우저 왼쪽 끝에 붙는다 -->
+      <div id="choice" class="choice" aria-hidden="true">
+        <div id="choice-panel" class="choice-panel">
+          <div class="choice-inner">
+            <div class="choice-mark" aria-hidden="true">?</div>
+            <p id="choice-question" class="choice-question"></p>
+            <ul id="choice-list" class="choice-list"></ul>
+            <!-- 선택지가 아닌 보조 버튼 자리 (예: 질문 다시 보기).
+                 choice 노드의 actions[] 가 여기로 들어온다. -->
+            <div id="choice-extra" class="choice-extra"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="loading" class="loading" aria-hidden="true"><span></span><span></span><span></span></div>
+  </div>
+</div>
+
+<audio id="aud-narr" preload="auto"></audio>
+<audio id="aud-sfx" preload="auto"></audio>
+
+<div id="debug" class="debug" hidden></div>
+
+<!-- ==========================================================================
+     콘텐츠 등록
+     메뉴 구성표 → 각 편의 시나리오 → 엔진 순서로 읽는다.
+     편을 추가하려면 content/<id>/scenario.js 를 만들고 아래에 한 줄 넣으면 된다.
+     (없는 파일을 적어 두면 404 가 나므로, 만들기 전에는 주석으로 둔다)
+     ========================================================================== -->
+<script src="content/menu.js"></script>
+<script src="content/c1/scenario1.js"></script>
+<script src="content/c2/scenario2.js"></script>
+<script src="content/c3/scenario3.js"></script>
+<script src="content/c4/scenario4.js"></script>
+
+<!-- 엔진 : 콘텐츠를 모른다 -->
+<script src="js/engine.js"></script>
+</body>
+</html>

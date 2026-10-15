@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>EXP② — 모스부호 교신</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/import.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <script src="js/preload-manifest.js"></script>
+    <script src="js/common.js"></script>
+  </head>
+  <body>
+    <main>
+      <div class="wrap">
+        <div class="container">
+          <div class="cut-bg exp2-room"></div>
+
+          <!-- 진행 게이지(성공률 n/20) — 좌하단 -->
+          <div class="game-gage">
+            <img class="gage-bg" src="img/common/exp_gage_bg.png" alt="" />
+            <div class="gage-fill" id="gageFill"></div>
+            <span class="gage-text" id="gageText">성공률 0/20</span>
+          </div>
+
+          <!-- 상단 버튼(중앙): 설정 - 튜토리얼 - 나가기 -->
+          <div class="game-top">
+            <button class="btn-top" id="btnSetting"><img src="img/4_EXP2/btn_setting.png" alt="설정" /></button>
+            <button class="btn-top" id="btnInfo"><img src="img/4_EXP2/btn_info.png" alt="튜토리얼" /></button>
+            <button class="btn-top" id="btnHome"><img src="img/common/btn_home.png" alt="나가기" /></button>
+          </div>
+
+          <!-- 교신창 -->
+          <div class="morse-window">
+            <img class="window-img" src="img/4_EXP2/exp2_game_bg.png" alt="" />
+            <span class="morse-letter" id="morseLetter"></span>
+            <!-- 완료 시 'EAGLE SEND'(영문 이미지)에서 교차 디졸브될 한글 텍스트(임시; 추후 이미지 소스 교체 가능) -->
+            <span class="morse-letter-kor" id="morseLetterKor">각 지대 즉각 전달</span>
+            <div class="morse-track" id="morseTrack"><canvas id="morseCanvas"></canvas></div>
+            <div class="morse-hit-line" id="hitLine"><img src="img/4_EXP2/exp2_hit_line.png" alt="" /></div>
+            <span class="morse-judge" id="morseJudge"></span>
+          </div>
+
+          <!-- 전신기(터치) -->
+          <div class="morse-key" id="morseKey">
+            <img id="morseKeyImg" src="img/4_EXP2/exp2_morse_off.png" alt="전신기" />
+          </div>
+
+          <!-- 시작 오버레이(시작 메시지는 미사용 — 진입 시 방법 안내 팝업이 게이트. 전신기 터치 단계에서만 노출) -->
+          <div class="game-start display-none" id="gameStart">
+            <img class="start-msg" src="img/4_EXP2/exp2_msg_start.png" alt="" />
+            <img class="start-touch" src="img/4_EXP2/icon_touch.png" alt="터치하여 시작" />
+            <!-- 전신기 위 시작 핫스팟(start-touch 클릭 후 노출) -->
+            <div class="hotspot key-hotspot display-none" id="startHotspot">
+              <img class="hot-glow" src="img/common/icon_touch_effect.png" alt="" />
+              <img class="hot-hand" src="img/4_EXP2/icon_touch.png" alt="" />
+            </div>
+          </div>
+
+          <!-- 설정 팝업 -->
+          <div class="dimmed" id="settingDim">
+            <div class="dialog setting">
+              <img class="popup-base" src="img/common/exp_setting.png" alt="설정" />
+              <button class="btn-close" id="setClose"><img src="img/4_EXP2/btn_close.png" alt="닫기" /></button>
+              <button class="toggle toggle-bgm" id="toggleBgm" data-img-on="img/common/btn_toggle_on.png" data-img-off="img/common/btn_toggle_off.png">
+                <img src="img/common/btn_toggle_on.png" alt="배경음" />
+              </button>
+              <button class="toggle toggle-sfx" id="toggleSfx" data-img-on="img/common/btn_toggle_on.png" data-img-off="img/common/btn_toggle_off.png">
+                <img src="img/common/btn_toggle_on.png" alt="효과음" />
+              </button>
+            </div>
+          </div>
+
+          <!-- 튜토리얼 팝업 -->
+          <div class="dimmed" id="tutorialDim">
+            <div class="dialog tutorial">
+              <img class="popup-base" src="img/4_EXP2/exp2_info.png" alt="게임 방법" />
+              <button class="btn-close" id="tutClose"><img src="img/4_EXP2/btn_close.png" alt="닫기" /></button>
+            </div>
+          </div>
+
+          <!-- 완료 팝업 -->
+          <div class="dimmed" id="finishDim">
+            <div class="dialog finish">
+              <img class="finish-base" src="img/4_EXP2/exp2_popup_finish.png" alt="교신 완료" />
+              <img class="finish-stamp" src="img/common/clear_stamp.png" alt="성공" />
+              <div class="finish-btns">
+                <button id="btnNext"><img src="img/common/exp_popup_btn_next.png" alt="다음으로" /></button>
+                <button id="btnRetry"><img src="img/common/exp_popup_btn_retry.png" alt="다시 하기" /></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="js/exp2.js"></script>
+  </body>
+</html>

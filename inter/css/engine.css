@@ -1,0 +1,803 @@
+@charset "utf-8";
+/* ==========================================================================
+   engine.css — 구조와 동작. 콘텐츠가 바뀌어도 이 파일은 바뀌지 않는다.
+
+   호환 방침 : CSS 변수 / aspect-ratio / grid / clamp / gap 미사용.
+               퍼센트 + rem + JS 레터박스 계산으로 처리한다.
+   좌표 방침 : 모든 위치는 무대(16:9) 기준 % — 시안의 판넬을 그대로 비례 환산.
+               1rem = 무대 짧은 변의 1% (engine.js 의 fitStage() 가 잡는다).
+   아이콘     : 전부 CSS 도형. 웹폰트·아이콘폰트·이미지에 의존하지 않는다.
+   ========================================================================== */
+
+* { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+
+html, body {
+  margin: 0; padding: 0;
+  width: 100%; height: 100%;
+  overflow: hidden;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#app {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: #0e0b18;
+}
+
+/* 무대는 브라우저 화면을 가득 채운다. 배경 그라데이션도 화면 끝까지 간다. */
+#stage {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+/* 가운데 16:9 틀 — 지금까지 '무대' 였던 그 상자다.
+   안쪽 요소는 전부 이 틀 기준 % 로 놓이므로 브라우저 크기가 바뀌어도
+   서로의 비례가 흐트러지지 않는다(영상·제목·선택하기 버튼·통합 메뉴).
+   위치와 크기는 js/engine.js 의 fitStage() 가 px 로 계산해 넣는다. */
+.frame {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+}
+
+/* --------------------------------------------------------------- 레이어 */
+.layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+.layer-bg     { z-index: 1; }
+.layer-stage  { z-index: 2; }
+.layer-frame  { z-index: 3; pointer-events: none; }
+.layer-dim    { z-index: 4; pointer-events: none; background: #1b1435; opacity: 0; }
+.layer-ui     { z-index: 5; pointer-events: none; }
+
+.layer-bg img { display: block; width: 100%; height: 100%; }
+.layer-bg img { object-fit: cover; font-family: "object-fit:cover"; }
+
+/* UI 레이어는 통과시키고, 실제 조작 요소만 되살린다 (원본의 advClick="0" 재현) */
+.layer-ui button,
+.layer-ui a,
+.layer-ui .choice[data-open="1"] { pointer-events: auto; }
+
+/* ------------------------------------------------------------ 영상 무대 */
+/* 위치·크기는 scenario.stage.video 의 % 값을 engine.js 가 주입한다 */
+#screen {
+  position: absolute;
+  overflow: hidden;
+  background: #000;
+  border-radius: 1rem;
+}
+#screen video {
+  position: absolute; top: 0; left: 0;
+  display: block; width: 100%; height: 100%;
+  object-fit: cover; font-family: "object-fit:cover";
+  background: #000;
+}
+
+/* 자동재생 차단 시 뜨는 탭 버튼 */
+.tap-to-play {
+  position: absolute; top: 0; left: 0; z-index: 4;
+  width: 100%; height: 100%;
+  display: none;
+  border: 0; padding: 0; margin: 0; cursor: pointer;
+  background: rgba(0, 0, 0, .5);
+  color: #fff; font: inherit;
+}
+.tap-to-play.on { display: block; }
+.tap-icon {
+  display: block; margin: 0 auto .8rem;
+  width: 0; height: 0;
+  border-top: 2.2rem solid transparent;
+  border-bottom: 2.2rem solid transparent;
+  border-left: 3.6rem solid #fff;
+}
+.tap-text { display: block; font-size: 2rem; letter-spacing: .1em; }
+
+/* ======================================================= 재생 컨트롤바 */
+/* 영상 무대 안쪽 하단에 겹친다. 자동재생 차단 오버레이(z-index 4)보다 위에
+   두어 차단된 상태에서도 재생 버튼을 누를 수 있게 한다.
+   아이콘은 전부 CSS 도형 — 웹폰트/SVG/이미지 없이 그린다. */
+.vctrl {
+  position: absolute; z-index: 5; left: 0; right: 0; bottom: 0;
+  padding: 3.6rem 2rem 1.6rem;
+  opacity: 0; visibility: hidden; pointer-events: none;
+}
+.vctrl.on { opacity: 1; visibility: visible; pointer-events: auto; }
+
+/* ---- 진행바 ---- */
+.vbar {
+  position: relative; display: block;
+  height: 1.8rem; margin: 0 0 1rem;
+  cursor: pointer;
+}
+.vbar-track, .vbar-fill {
+  position: absolute; top: .65rem; left: 0;
+  height: .5rem; border-radius: 999px;
+}
+.vbar-track { right: 0; }
+.vbar-fill  { width: 0; }
+.vbar-knob {
+  position: absolute; top: .1rem; left: 0;
+  width: 1.6rem; height: 1.6rem; margin-left: -.8rem;
+  border-radius: 50%;
+  opacity: 0;
+}
+.vbar:hover .vbar-knob,
+.vbar:focus .vbar-knob,
+.vbar.dragging .vbar-knob { opacity: 1; }
+.vbar:focus { outline: .25rem solid #ffd76a; outline-offset: .2rem; }
+
+/* ---- 버튼 줄 ---- */
+.vrow { position: relative; white-space: nowrap; font-size: 0; }
+
+.vbtn {
+  display: inline-block; vertical-align: middle;
+  margin: 0 .6rem 0 0; padding: 0 1.7rem;
+  height: 4rem;
+  border: 0; border-radius: 999px; cursor: pointer;
+  font-family: inherit; font-size: 1.7rem; font-weight: 700; line-height: 4rem;
+  white-space: nowrap;
+}
+.vbtn-icon { position: relative; width: 4rem; padding: 0; }
+
+/* 재생 / 일시정지 */
+.vi {
+  position: absolute; top: 50%; left: 50%;
+  width: 0; height: 0;
+  margin: -.95rem 0 0 -.55rem;
+  border-top: .95rem solid transparent;
+  border-bottom: .95rem solid transparent;
+  border-left: 1.5rem solid #fff;
+}
+.vbtn-icon.playing .vi {                 /* box-shadow 로 두 번째 줄을 만든다 */
+  width: .55rem; height: 1.9rem;
+  margin: -.95rem 0 0 -.78rem;
+  border: 0; background: #fff;
+  -webkit-box-shadow: 1rem 0 0 #fff;
+          box-shadow: 1rem 0 0 #fff;
+}
+
+.vtime {
+  display: inline-block; vertical-align: middle;
+  margin: 0 1rem;
+  font-size: 1.6rem; line-height: 4rem;
+}
+
+/* 우측 묶음 : 배속 · 음량 · 전체화면 */
+.vright { position: absolute; right: 0; top: 0; white-space: nowrap; }
+.vspeed, .vvol { display: inline-block; vertical-align: middle; }
+.vspeed .vbtn { margin: 0 0 0 .6rem; }
+.vrate { min-width: 5.4rem; padding: 0 1.2rem; text-align: center; }
+
+/* ---- 음량 ---- */
+.vvol { margin: 0 0 0 1.4rem; }
+.vbtn-vol { margin: 0; }
+
+/* 스피커 : 몸통(:before) + 콘(:after) + 음파(i) + 음소거 사선(b) */
+.ic-vol {
+  position: absolute; top: 50%; left: 50%;
+  width: 2.4rem; height: 1.9rem;
+  margin: -.95rem 0 0 -1.2rem;
+}
+.ic-vol:before {                         /* 스피커 몸통 */
+  content: ""; position: absolute; left: 0; top: .55rem;
+  width: .6rem; height: .8rem; background: #fff;
+}
+.ic-vol:after {                          /* 스피커 콘 */
+  content: ""; position: absolute; left: .5rem; top: 0;
+  width: 0; height: 0;
+  border-top: .95rem solid transparent;
+  border-bottom: .95rem solid transparent;
+  border-right: .8rem solid #fff;
+}
+.ic-vol i { position: absolute; left: 0; top: 0; right: 0; bottom: 0; }
+.ic-vol i:before, .ic-vol i:after {      /* 음파 두 줄 (원호) */
+  content: ""; position: absolute;
+  border: .22rem solid transparent; border-right-color: #fff;
+  border-radius: 50%;
+}
+.ic-vol i:before { right: .62rem; top: .5rem; width: .3rem; height: .5rem; }
+.ic-vol i:after  { right: 0;      top: .1rem; width: .6rem; height: 1.3rem; }
+.ic-vol b { display: none; }
+
+/* 음소거 : 음파를 지우고 사선을 긋는다 */
+.vbtn-vol.muted .ic-vol i { display: none; }
+.vbtn-vol.muted .ic-vol b {
+  display: block; position: absolute;
+  left: .1rem; top: .85rem; width: 2.4rem; height: .26rem;
+  background: #fff;
+  -webkit-transform: rotate(-40deg);
+      -ms-transform: rotate(-40deg);
+          transform: rotate(-40deg);
+}
+
+.vvolbar {
+  position: relative; display: inline-block; vertical-align: middle;
+  width: 10rem; height: 1.8rem; margin: 0 0 0 .5rem;
+  cursor: pointer;
+}
+.vvol-track, .vvol-fill {
+  position: absolute; top: .65rem; left: 0;
+  height: .5rem; border-radius: 999px;
+}
+.vvol-track { right: 0; }
+.vvol-fill  { width: 100%; }
+.vvol-knob {
+  position: absolute; top: .1rem; left: 100%;
+  width: 1.6rem; height: 1.6rem; margin-left: -.8rem;
+  border-radius: 50%;
+  opacity: 0;
+}
+.vvolbar:hover .vvol-knob,
+.vvolbar:focus .vvol-knob,
+.vvolbar.dragging .vvol-knob { opacity: 1; }
+.vvolbar:focus { outline: .25rem solid #ffd76a; outline-offset: .2rem; }
+
+/* ---- 전체화면 : 네 모서리 브래킷 (자식 <i> 로 의사요소를 2개 더 쓴다) ---- */
+.ic-fs {
+  position: absolute; top: 50%; left: 50%;
+  width: 2.1rem; height: 1.9rem;
+  margin: -.95rem 0 0 -1.05rem;
+}
+.ic-fs:before, .ic-fs:after,
+.ic-fs i:before, .ic-fs i:after {
+  content: ""; position: absolute;
+  width: .68rem; height: .6rem;
+  border: 0 solid #fff;
+}
+.ic-fs i { position: absolute; left: 0; top: 0; right: 0; bottom: 0; }
+.ic-fs:before   { left: 0;  top: 0;     border-top-width: .24rem;    border-left-width: .24rem; }
+.ic-fs:after    { right: 0; bottom: 0;  border-bottom-width: .24rem; border-right-width: .24rem; }
+.ic-fs i:before { right: 0; top: 0;     border-top-width: .24rem;    border-right-width: .24rem; }
+.ic-fs i:after  { left: 0;  bottom: 0;  border-bottom-width: .24rem; border-left-width: .24rem; }
+
+/* 크롬(무대 우상단) 버튼은 툴바보다 크므로 아이콘도 키운다 */
+.chrome .ic-fs { width: 3.6rem; height: 3.2rem; margin: -1.6rem 0 0 -1.8rem; }
+.chrome .ic-fs:before, .chrome .ic-fs:after,
+.chrome .ic-fs i:before, .chrome .ic-fs i:after { width: 1.15rem; height: 1rem; }
+.chrome .ic-fs:before   { border-top-width: .36rem;    border-left-width: .36rem; }
+.chrome .ic-fs:after    { border-bottom-width: .36rem; border-right-width: .36rem; }
+.chrome .ic-fs i:before { border-top-width: .36rem;    border-right-width: .36rem; }
+.chrome .ic-fs i:after  { border-bottom-width: .36rem; border-left-width: .36rem; }
+
+
+/* ======================================================== 통합 메뉴 */
+/* 어떤 편을 볼지 고르는 화면. 플레이어와 같은 무대(16:9) 안에서 그린다.
+   카드 표지는 이미지가 아니라 그 편 시작 영상의 첫 컷이다. */
+
+.menu { display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+/* 모드 전환 : #app 의 클래스 하나로 메뉴/플레이어를 갈아 끼운다 */
+.mode-menu .menu       { display: block; }
+.mode-menu .layer-stage,
+.mode-menu .node-head,
+.mode-menu .actions,
+.mode-menu .choice     { display: none; }
+.mode-play .menu       { display: none; }
+
+.menu-head { position: absolute; left: 8%; right: 8%; top: 11%; text-align: center; }
+.menu-title { margin: 0; font-size: 5.6rem; font-weight: 700; line-height: 1.2; }
+.menu-sub   { margin: 1.8rem 0 0; font-size: 2.6rem; font-weight: 500; }
+
+.menu-list {
+  position: absolute; left: 8%; right: 8%; top: 32%;
+  margin: 0; padding: 0; list-style: none;
+  font-size: 0; white-space: nowrap;
+}
+/* 폭과 간격은 카드 개수에 맞춰 engine.js 가 넣는다 */
+.menu-item { display: inline-block; vertical-align: top; }
+
+.menu-card {
+  display: block;
+  border-radius: 1.6rem;
+  overflow: hidden;
+  padding: 0 0 2.2rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+.menu-card:focus { outline: .35rem solid #7d67c8; outline-offset: .4rem; }
+
+/* 표지 : 16:9 를 aspect-ratio 없이 padding-bottom 비율로 잡는다(호환 우선) */
+.menu-thumb {
+  position: relative; display: block;
+  width: 100%; height: 0; padding-bottom: 56.25%;
+  overflow: hidden;
+}
+.menu-thumb-v {
+  position: absolute; left: 0; top: 0;
+  display: block; width: 100%; height: 100%;
+  object-fit: cover; font-family: "object-fit:cover";
+}
+
+/* 카드마다 설명 줄 수가 달라도 높이가 어긋나지 않도록 최소 높이를 준다
+   (inline-block 은 vertical-align:top 이라 아래쪽이 들쭉날쭉해 보인다) */
+.menu-body {
+  display: block;
+  min-height: 17rem;
+  padding: 1.7rem 1.8rem 0;
+  text-align: left;
+}
+
+.menu-badge {
+  display: inline-block; vertical-align: middle;
+  padding: 0 1.2rem; height: 3.6rem;
+  border-radius: 999px;
+  font-size: 1.9rem; font-weight: 700; line-height: 3.6rem;
+  white-space: nowrap;
+}
+.menu-off {
+  display: inline-block; vertical-align: middle;
+  margin-left: .8rem;
+  padding: 0 1.2rem; height: 3.6rem;
+  border-radius: 999px;
+  font-size: 1.9rem; font-weight: 700; line-height: 3.6rem;
+  white-space: nowrap;
+}
+.menu-label {
+  display: block; margin: 1.3rem 0 0;
+  font-size: 2.8rem; font-weight: 700; line-height: 1.3;
+  white-space: normal;
+}
+.menu-desc {
+  display: block; margin: .8rem 0 0;
+  font-size: 1.9rem; font-weight: 400; line-height: 1.45;
+  white-space: normal;
+}
+
+/* 준비되지 않은 편 */
+.menu-card.is-off { cursor: default; }
+
+.menu-hint {
+  position: absolute; left: 0; right: 0; bottom: 16%;
+  margin: 0; text-align: center;
+  font-size: 1.9rem;
+}
+
+/* 좁은 화면 : 카드가 4장 나란히 서기엔 좁으므로 설명을 줄인다 */
+@media (max-width: 640px) {
+  .menu-desc  { display: none; }
+  .menu-label { font-size: 3.2rem; }
+  .menu-title { font-size: 6.4rem; }
+}
+
+/* =========================================================== 머리글 */
+/* 시안 기준 : 좌측 12.9%, 아래쪽 정렬. 배지가 없으면 제목만 같은 자리에 남는다. */
+.node-head {
+  position: absolute;
+  left: 12.9%; right: 27%;
+  top: 4%; height: 14.4%;
+}
+.node-head-in { position: absolute; left: 0; right: 0; bottom: 0; }
+
+.node-badge {
+  display: none;
+  margin: 0 0 .5rem;
+  padding: 0 1.5rem;
+  height: 5.4rem;
+  font-size: 3.4rem; font-weight: 700; line-height: 5.4rem;
+  white-space: nowrap;
+  opacity: 0;
+}
+.node-badge.has { display: inline-block; }
+.node-badge.on  { opacity: 1; }
+
+.node-title {
+  margin: 0;
+  font-size: 5.2rem; font-weight: 700; line-height: 1.22;
+  text-align: left;
+  opacity: 0;
+  -webkit-transform: translateY(.8rem);
+      -ms-transform: translateY(.8rem);
+          transform: translateY(.8rem);
+}
+.node-title.on {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+      -ms-transform: translateY(0);
+          transform: translateY(0);
+}
+
+/* ----------------------------------------------------------- 공통 크롬 */
+/* UI 레이어 내부 순서.
+     .frame-ui 1  ← 16:9 틀 안의 것들(제목·선택하기·통합 메뉴·하단 액션)
+     .choice   2  ← 선택 허브 팝업. 틀 안의 것들을 덮는다
+     .appbar   3  ← 홈·햄버거. 팝업이 떠 있어도 눌려야 하므로 맨 위
+   (z-index 없이는 DOM 순서상 .choice 가 크롬 버튼을 가려 눌리지 않는다) */
+.frame-ui  { z-index: 1; }
+.choice    { z-index: 2; }
+.appbar    { z-index: 3; }
+
+.appfoot   { z-index: 3; }
+
+/* .frame-ui 안에서의 순서 */
+.chrome    { z-index: 3; }
+.actions   { z-index: 3; }
+.menu      { z-index: 2; }
+
+.chrome { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+.chrome .btn {
+  position: absolute;
+  display: -webkit-box; display: -ms-flexbox; display: flex;
+  -webkit-box-align: center; -ms-flex-align: center; align-items: center;
+  -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center;
+  padding: 0 1.4rem;
+  border: 0; cursor: pointer;
+  font-family: inherit; font-size: 3.4rem; font-weight: 700; line-height: 1;
+  white-space: nowrap;
+}
+.chrome .btn-icon { padding: 0; }
+
+/* 집 아이콘 : 지붕(:before) + 몸통(:after) */
+.ic-home {
+  position: absolute; top: 50%; left: 50%;
+  width: 4.6rem; height: 4.3rem;
+  margin: -2.15rem 0 0 -2.3rem;
+}
+.ic-home:before {                        /* 지붕 : 처마를 조금만 내어 화살표로 안 보이게 */
+  content: ""; position: absolute; left: 0; top: 0;
+  width: 0; height: 0;
+  border-left: 2.3rem solid transparent;
+  border-right: 2.3rem solid transparent;
+  border-bottom: 1.7rem solid #fff;
+}
+.ic-home:after {                         /* 몸통 */
+  content: ""; position: absolute; left: .45rem; top: 1.6rem;
+  width: 3.7rem; height: 2.7rem;
+  background: #fff;
+  border-radius: 0 0 .4rem .4rem;
+}
+
+/* ============================================================== 앱 바 */
+/* 16:9 틀이 아니라 '브라우저 화면' 모서리에 붙는 버튼들.
+   크기는 rem 이라 틀 안의 버튼들과 정확히 같은 비례로 커지고 작아지는데,
+   자리만 화면 끝을 기준으로 잡으므로 넓은 화면에서는 좌우로 더 벌어진다.
+   (16:9 화면에서는 예전 무대 안 좌표와 픽셀 단위로 일치한다) */
+.appbar {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+}
+
+.abtn {
+  position: absolute;
+  display: block;
+  padding: 0;
+  border: 0; cursor: pointer;
+  font-family: inherit;
+  pointer-events: auto;
+}
+
+/* 왼쪽 위 : 홈 */
+.abtn-home { left: 5.2rem; top: 6.2rem; width: 10.5rem; height: 10.4rem; }
+
+/* 오른쪽 위 : 햄버거 */
+.appmenu-wrap { position: absolute; right: 4.3rem; top: 5.4rem; pointer-events: none; }
+.abtn-bars    { position: relative; right: auto; top: auto; width: 6.4rem; height: 6.4rem; }
+
+/* 통합 메뉴 화면에서는 돌아갈 곳이 없으므로 홈을 감춘다 */
+.mode-menu .abtn-home { display: none; }
+
+/* ---- 햄버거 아이콘 : 가운데 줄은 요소 자신, 위아래는 의사요소 ---- */
+.ic-bars {
+  position: absolute; top: 50%; left: 50%;
+  width: 3.4rem; height: .46rem;
+  margin: -.23rem 0 0 -1.7rem;
+  background: #fff;
+  border-radius: 999px;
+}
+.ic-bars:before, .ic-bars:after {
+  content: ""; position: absolute; left: 0;
+  width: 100%; height: .46rem;
+  background: #fff;
+  border-radius: 999px;
+}
+.ic-bars:before { top: -1.15rem; }
+.ic-bars:after  { top:  1.15rem; }
+
+/* ---- 펼쳐지는 목록 : 버튼 바로 아래, 오른쪽 끝을 맞춘다 ---- */
+.appmenu {
+  position: absolute;
+  right: 0; top: 8.4rem;
+  margin: 0; padding: 1.2rem 0;
+  list-style: none;
+  min-width: 34rem;
+  white-space: nowrap;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transform: translateY(-1.2rem);
+      -ms-transform: translateY(-1.2rem);
+          transform: translateY(-1.2rem);
+  -webkit-transition: opacity .18s ease, -webkit-transform .18s ease;
+          transition: opacity .18s ease, transform .18s ease;
+}
+.appmenu[data-open="1"] {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  -webkit-transform: translateY(0);
+      -ms-transform: translateY(0);
+          transform: translateY(0);
+}
+.appmenu li { display: block; margin: 0; padding: 0; }
+
+.ambtn {
+  display: block; width: 100%;
+  margin: 0;
+  padding: 1.5rem 2.6rem;
+  border: 0; background: none;
+  font-family: inherit; font-size: 2.6rem; font-weight: 700; line-height: 1.2;
+  text-align: left; text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+/* =========================================================== 안내 고지 */
+/* 화면 아래 가운데에 늘 붙어 있는 한 줄.
+   16:9 틀이 아니라 '브라우저 화면' 기준이라 창 모양이 바뀌어도 늘 맨 아래다.
+   허브 팝업(보라 패널) 위에서도 읽혀야 하므로 팝업보다 위층에 두고,
+   옅은 흰 알약을 깔아 라벤더 배경 위에서도 보라 패널 위에서도 대비를 유지한다.
+   클릭은 통과시킨다 — 아래에 있는 버튼을 가로채면 안 되므로. */
+.appfoot {
+  position: absolute;
+  left: 50%; bottom: 1.8rem;
+  max-width: 90%;
+  margin: 0;
+  padding: .8rem 2.2rem;
+  font-size: 2.1rem; font-weight: 500; line-height: 1.3;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+/* ---------------------------------------------------------- 액션 버튼 */
+.actions {
+  position: absolute;
+  left: 0; right: 0; bottom: 2.4%;
+  text-align: center;
+  font-size: 0;
+}
+.actions .btn {
+  display: inline-block;
+  margin: 0 .8rem;
+  padding: 1.2rem 3.2rem;
+  border: 0; cursor: pointer;
+  font-family: inherit; font-size: 2.2rem; font-weight: 700; line-height: 1;
+}
+
+/* -------------------------------------------------------------- 선택 허브 */
+/* 선택 허브는 영상 노드 위에 겹치는 '팝업' 이다.
+   data-open  0 = 닫힘(완전 숨김, 클릭도 통과 → 아래 영상 컨트롤이 바로 먹는다)
+              1 = 열림 */
+.choice {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  visibility: hidden;
+}
+.choice[data-open="1"] { visibility: visible; }
+
+/* 패널은 '브라우저 왼쪽 끝' 에 붙는다. 폭은 지금까지의 규격 그대로 —
+   16:9 틀 기준 74% 를 rem 으로 환산한 값(74 × 16/9 = 131.6rem)이다.
+   그래서 화면이 넓어지면 덮이는 영역이 가운데 영상보다 왼쪽으로 치우친다. */
+.choice-panel {
+  position: absolute; top: 0; left: 0; bottom: 0;
+  width: 131.6rem;
+  max-width: 100%;
+  opacity: 0;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.choice[data-open="1"] .choice-panel {
+  opacity: 1;
+  -webkit-transform: translateX(0);
+      -ms-transform: translateX(0);
+          transform: translateX(0);
+}
+
+
+.choice-inner {
+  position: absolute; top: 50%; left: 0;
+  width: 100%;
+  padding: 0 12.3% 0 23%;
+  text-align: center;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.choice-mark {
+  width: 10rem; height: 10rem; margin: 0 auto 2.6rem;
+  border-radius: 50%;
+  font-size: 5.6rem; font-weight: 700; line-height: 10rem;
+}
+.choice-question {
+  margin: 0 0 7rem;
+  font-size: 6rem; font-weight: 700; line-height: 1.3;
+}
+.choice-list { margin: 0; padding: 0; list-style: none; }
+.choice-list li { margin: 0 0 3.3rem; }
+.choice-list li:last-child { margin-bottom: 0; }
+.choice-list .btn {
+  position: relative;
+  display: block; width: 100%;
+  min-height: 7.7rem;
+  padding: 1.6rem 8rem;
+  border: 0; cursor: pointer;
+  font-family: inherit; font-size: 3.3rem; line-height: 1.35;
+  text-align: center;
+}
+/* 오른쪽 → 화살표 (화살대 + 화살촉) */
+.choice-list .btn:before {
+  content: ""; position: absolute;
+  right: 3rem; top: 50%;
+  width: 2.4rem; height: .3rem; margin-top: -.15rem;
+}
+.choice-list .btn:after {
+  content: ""; position: absolute;
+  right: 3rem; top: 50%;
+  width: 1.7rem; height: 1.7rem; margin-top: -.85rem;
+  border-top: .3rem solid; border-right: .3rem solid;
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+/* 선택지가 아닌 보조 버튼 (예: 질문 다시 보기).
+   선택지 아래에 한 칸 띄우고, 선택지보다 작고 흐리게 두어 구분한다. */
+.choice-extra { margin: 5rem 0 0; text-align: center; font-size: 0; }
+.choice-extra:empty { display: none; }
+.choice-extra .btn {
+  display: inline-block;
+  margin: 0 .8rem;
+  padding: 1.4rem 3.4rem;
+  border: 0; cursor: pointer;
+  font-family: inherit; font-size: 2.7rem; font-weight: 700; line-height: 1;
+}
+
+/* ------------------------------------------------------------- 로딩 표시 */
+.loading {
+  position: absolute; z-index: 6; left: 50%; bottom: 11.5%;
+  /* 하단 액션 버튼과 겹쳐 클릭을 가로채지 않도록 반드시 통과시킨다 */
+  pointer-events: none;
+  opacity: 0;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.loading.on { opacity: 1; }
+.loading span {
+  display: inline-block; width: 1rem; height: 1rem; margin: 0 .4rem;
+  border-radius: 50%; background: #fff; opacity: .35;
+  -webkit-animation: blink 1.05s infinite;
+          animation: blink 1.05s infinite;
+}
+.loading span:nth-child(2) { -webkit-animation-delay: .18s; animation-delay: .18s; }
+.loading span:nth-child(3) { -webkit-animation-delay: .36s; animation-delay: .36s; }
+@-webkit-keyframes blink { 0%,100% { opacity:.25 } 50% { opacity:1 } }
+@keyframes blink { 0%,100% { opacity:.25 } 50% { opacity:1 } }
+
+/* =============================================== 전체화면 (벤더별 분리) */
+/* 접두사가 다른 의사클래스를 콤마로 묶으면 규칙 전체가 무효가 되므로 반드시 따로 쓴다.
+   #screen 은 engine.js 가 인라인 style 로 위치를 넣으므로 !important 가 필요하다. */
+#screen:fullscreen {
+  position: fixed !important;
+  left: 0 !important; top: 0 !important;
+  width: 100% !important; height: 100% !important;
+  border-radius: 0;
+}
+#screen:-webkit-full-screen {
+  position: fixed !important;
+  left: 0 !important; top: 0 !important;
+  width: 100% !important; height: 100% !important;
+  border-radius: 0;
+}
+#screen:-moz-full-screen {
+  position: fixed !important;
+  left: 0 !important; top: 0 !important;
+  width: 100% !important; height: 100% !important;
+  border-radius: 0;
+}
+#screen:-ms-fullscreen {
+  position: fixed !important;
+  left: 0 !important; top: 0 !important;
+  width: 100% !important; height: 100% !important;
+  border-radius: 0;
+}
+/* 전체화면 요소의 기본 검정 배경 */
+:fullscreen         { background: #000; }
+:-webkit-full-screen { background: #000; }
+:-moz-full-screen   { background: #000; }
+:-ms-fullscreen     { background: #000; }
+
+/* --------------------------------------------------------------- 전환 */
+/* 트랜지션은 한 곳에 모아 둔다. 값 변경은 여기서. */
+.layer-dim,
+.node-title,
+.node-badge,
+.choice-panel,
+.loading {
+  -webkit-transition: opacity .34s ease, -webkit-transform .34s ease;
+          transition: opacity .34s ease, transform .34s ease;
+}
+.choice-panel {
+  -webkit-transition: opacity .3s ease .2s, -webkit-transform .3s ease .2s;
+          transition: opacity .3s ease .2s, transform .3s ease .2s;
+}
+.btn {
+  -webkit-transition: background-color .18s ease, -webkit-transform .06s ease;
+          transition: background-color .18s ease, transform .06s ease;
+}
+.vbtn {
+  -webkit-transition: background-color .18s ease, -webkit-transform .06s ease;
+          transition: background-color .18s ease, transform .06s ease;
+}
+.menu-card {
+  -webkit-transition: -webkit-transform .18s ease, -webkit-box-shadow .18s ease;
+          transition: transform .18s ease, box-shadow .18s ease;
+}
+.vctrl {
+  -webkit-transition: opacity .2s ease;
+          transition: opacity .2s ease;
+}
+.vbar-knob, .vvol-knob {
+  -webkit-transition: opacity .15s ease;
+          transition: opacity .15s ease;
+}
+
+/* ---------------------------------------------------------- 누른 느낌 */
+/* 버튼을 누르고 있는 동안 오른쪽·아래로 살짝 밀린다.
+   0.25rem = 무대 짧은 변의 0.25% — 1920×1080 에서 약 2.7px(=2pt).
+   rem 이라 창을 키우고 줄여도 눌리는 정도가 같은 비율로 유지된다. */
+.btn:active,
+.vbtn:active,
+.abtn:active,
+.ambtn:active {
+  -webkit-transform: translate(.25rem, .25rem);
+      -ms-transform: translate(.25rem, .25rem);
+          transform: translate(.25rem, .25rem);
+}
+/* 메뉴 카드는 hover 로 이미 .8rem 떠 있으므로 그 자리에서 눌린다 */
+.menu-card:active {
+  -webkit-transform: translate(.25rem, -.55rem);
+      -ms-transform: translate(.25rem, -.55rem);
+          transform: translate(.25rem, -.55rem);
+}
+
+/* 모션 최소화 설정 존중 */
+@media (prefers-reduced-motion: reduce) {
+  .layer-dim, .node-title, .node-badge, .choice-panel,
+  .loading, .btn, .vbtn, .vctrl, .vbar-knob, .vvol-knob, .menu-card {
+    -webkit-transition: none !important;
+            transition: none !important;
+  }
+  /* 누름 표시는 위치 이동 대신 그대로 둔다 */
+  .btn:active, .vbtn:active, .abtn:active, .ambtn:active, .menu-card:active {
+    -webkit-transform: none; -ms-transform: none; transform: none;
+  }
+}
+
+/* --------------------------------------------------------- 좁은 화면 보정 */
+@media (max-width: 640px) {
+  .choice-panel { width: 100%; }
+  .choice-inner { padding: 0 7%; }
+  .node-head    { right: 14%; }
+  .vtime        { display: none; }
+  .vvolbar      { display: none; }
+  #v-replay     { display: none; }
+}
+
+/* ------------------------------------------------------------- 디버그 */
+.debug {
+  position: fixed; z-index: 99; right: 0; bottom: 0;
+  max-width: 46vw;
+  padding: 8px 10px;
+  background: rgba(0,0,0,.8); color: #9ef;
+  font: 12px/1.6 monospace;
+}
+.debug a { color: #ffd76a; margin-right: 8px; text-decoration: none; }

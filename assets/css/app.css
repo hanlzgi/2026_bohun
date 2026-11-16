@@ -1914,12 +1914,12 @@ body.is-portrait .portrait {
 .toc-item.cur { font-weight: 700; }
 
 /* ===================================================================
-   2026-11-16 수정 요청 반영 (우클릭 금지 / 400% 확대 / 전체 검색 / 코스별 마지막 페이지)
+   2026-11-16 수정 요청 반영 (우클릭 금지 / 200% 확대 / 전체 검색 / 코스별 마지막 페이지)
    =================================================================== */
 /* 우클릭 금지 보조 — iOS 길게 누르기 메뉴(이미지 저장) 억제. 탐방노트 페이지는 제외 */
 body:not(.on-note) .stage img { -webkit-touch-callout: none; }
 
-/* 본문 확대(400%) — 확대 중에는 드래그로 이동 */
+/* 본문 확대(200%) — 확대 중에는 드래그로 이동 */
 .stageWrap { touch-action: manipulation; }
 .stageWrap.is-zoomed { touch-action: none; }
 .stageWrap.is-zoomed .stage { cursor: grab; -webkit-user-select: none; user-select: none; }

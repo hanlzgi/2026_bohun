@@ -846,12 +846,12 @@
   // ===== 우클릭 금지 — 탐방노트 페이지에서만 허용(편집기 붙여넣기 등) =====
   document.addEventListener('contextmenu', e => { const p = curPage(); if (p && p.type === 'note') return; e.preventDefault(); });
 
-  // ===== 본문 확대 — 더블클릭(터치는 두 번 탭)한 지점을 중심으로 400% =====
+  // ===== 본문 확대 — 더블클릭(터치는 두 번 탭)한 지점을 중심으로 200% =====
   // 본문(stage)만 확대, 좌측 레일·페이저는 그대로. 드래그/휠로 이동. 해제: 다시 더블클릭 · ESC · 안내 배지 클릭 · 페이지 이동.
   // 버튼·사진·지도·퀴즈 보기 등 누르는 요소 위, 탐방노트 페이지에서는 확대하지 않는다. 확대 중 버튼을 누르면 원래 크기로 돌아온 뒤 동작한다.
-  const ZOOM = { on: false, k: 4, tx: 0, ty: 0 };
+  const ZOOM = { on: false, k: 2, tx: 0, ty: 0 };   // k = 확대 배율 (2 = 200%). 바꿀 때는 이 숫자와 아래 안내 문구를 함께
   const NOZOOM = 'button, a, input, textarea, select, [contenteditable], .hot, .pager, .nav-zone, .zoom-hint, .map-hot, .map-card, .map-dim, .quiz-opt, .quiz-photo, .quiz-ans, .quiz-wrong, .quiz-zoom, .page-photo, .gal-dim, .btn-add, .btn-inter, .btn-ar, .btn-vr, .btn-gmap, .toc-dim, .toc-card, .card-hotspot, .reveal-btn';
-  const zoomHint = el('button', 'zoom-hint'); zoomHint.type = 'button'; zoomHint.textContent = '400% 확대 중 · 두 번 누르거나 ESC로 원래 크기'; wrap.appendChild(zoomHint);
+  const zoomHint = el('button', 'zoom-hint'); zoomHint.type = 'button'; zoomHint.textContent = '200% 확대 중 · 두 번 누르거나 ESC로 원래 크기'; wrap.appendChild(zoomHint);
   zoomHint.addEventListener('click', e => { e.stopPropagation(); zoomOff(); });
   function zoomClamp() { const W = wrap.clientWidth, H = wrap.clientHeight; ZOOM.tx = Math.min(0, Math.max(W - W * ZOOM.k, ZOOM.tx)); ZOOM.ty = Math.min(0, Math.max(H - H * ZOOM.k, ZOOM.ty)); }
   function zoomApply(anim) { stage.classList.toggle('zoom-anim', !!anim); layout(); if (anim) setTimeout(() => stage.classList.remove('zoom-anim'), 260); }

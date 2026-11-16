@@ -14,18 +14,15 @@
     "caption": "브뤼셀 만국 평화 대회가 개최되었을 것으로 추정되는 박람회관 건물"
   },
   "labels": {
-    "add1": "추가자료1",
-    "add2": "추가자료2"
+    "add1": "추가자료1"
   },
   "tips": {
     "vr": "(VR) 국립대한민국임시정부기념관 2025년 국외교류전시: 평화를 향한 꿈",
-    "add1": "임시 정부의 대유럽 외교",
-    "add2": "김규식의 파리강화회의 참가"
+    "add1": "임시 정부의 대유럽 외교"
   },
   "links": {
     "vr": "https://my.matterport.com/show/?m=X8fASHAphXy",
     "add1": "https://www.nmkpg.go.kr/webzine/story/cn.do?rid=322",
-    "add2": "https://youtu.be/NYnRLYt_s4o",
     "gmap": "https://maps.app.goo.gl/A1n3CXQJtNkGjAXj9"
   },
   "annotations": [

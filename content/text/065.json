@@ -15,18 +15,21 @@
   },
   "labels": {
     "add1": "추가자료1",
-    "add2": "추가자료2"
+    "add2": "추가자료2",
+    "add3": "추가자료3"
   },
   "tips": {
     "vr": "(VR) 한국독립운동과 국제회의",
     "add1": "파리위원부의 유럽 외교",
-    "add2": "파리의 독립운동가 서영해"
+    "add2": "파리의 독립운동가 서영해",
+    "add3": "김규식의 파리강화회의 참가"
   },
   "links": {
     "vr": "https://cyber.i815.or.kr/special22/tour.html",
     "add1": "https://www.nmkpg.go.kr/webzine/story/cn.do?rid=436",
     "add2": "https://youtu.be/UlaJDD5wdJw",
-    "gmap": "https://maps.app.goo.gl/uY8is5tCi2gtjjBMA"
+    "gmap": "https://maps.app.goo.gl/uY8is5tCi2gtjjBMA",
+    "add3": "https://youtu.be/NYnRLYt_s4o"
   },
   "annotations": [
     {

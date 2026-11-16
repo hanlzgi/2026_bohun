@@ -130,6 +130,22 @@
   var sliders = [];         // 드래그 상태를 물어볼 슬라이더들
   var menuCards = [];       // 메뉴에서 숫자키로 고를 수 있는 카드들
 
+  /* 교재에서 넘어온 정보 (2026-11-16)
+     ?focus=c1  → 통합 메뉴에서 그 편 카드를 강조
+     ?from=<교재 페이지 id> → '교재로 이동하기' 때 그 페이지로 돌아간다 */
+  var QS = (function () {
+    var o = {}, parts = location.search.replace(/^\?/, '').split('&'), i, kv;
+    for (i = 0; i < parts.length; i++) {
+      if (!parts[i]) { continue; }
+      kv = parts[i].split('=');
+      try { o[decodeURIComponent(kv[0])] = decodeURIComponent((kv[1] || '').replace(/\+/g, ' ')); } catch (err) {}
+    }
+    return o;
+  })();
+  var SAFE_ID = /^[A-Za-z0-9_-]+$/;
+  var FOCUS = SAFE_ID.test(QS.focus || '') ? QS.focus : null;
+  var FROM  = SAFE_ID.test(QS.from  || '') ? QS.from  : null;
+
   /* --------------------------------------------------- 레터박스 계산 */
   /* aspect-ratio / vh 계산에 기대지 않고 JS로 직접 맞춘다(호환 우선). */
 
@@ -374,6 +390,21 @@
     });
   }
 
+  /* '교재로 이동하기' — 교재가 이 창을 열었으면(같은 사이트, from 있음) 이 창을 닫아 보던 교재 탭으로 돌아간다.
+     닫히지 않거나 직접 열었으면 같은 탭에서 교재를 연다(from 이 있으면 그 페이지로). 주소는 inter.html 의 href(상대 경로). */
+  function goTextbook(href) {
+    var url = (href || '../index.html').split('#')[0] + (FROM ? '#' + FROM : '');
+    var op = null;
+    try { op = window.opener; if (op && (op.closed || !op.location.href)) { op = null; } } catch (err) { op = null; }
+    if (op && FROM) {
+      try { op.focus(); } catch (err) {}
+      try { window.close(); } catch (err) {}
+      setTimeout(function () { if (!window.closed) { location.href = url; } }, 250);
+      return;
+    }
+    location.href = url;
+  }
+
   if (dom.appmenu) {
     on(dom.appmenu, 'click', function (e) {
       var t = e.target || e.srcElement, act = null;
@@ -385,6 +416,9 @@
       if (act === 'fullscreen') {
         if (e.preventDefault) { e.preventDefault(); }
         toggleFS(dom.app);
+      } else if (act === 'textbook') {
+        if (e.preventDefault) { e.preventDefault(); }
+        goTextbook(t.getAttribute('href'));
       }
       closeAppMenu();          // 무엇을 골랐든 목록은 접는다
     });
@@ -908,6 +942,20 @@
     return card;
   }
 
+  /* 교재의 해당 코스 페이지에서 들어온 경우(?focus=c1) — 그 편 카드를 강조하고 나머지는 흐리게 */
+  function markFocus(li, card, hit) {
+    if (!hit) { addClass(li, 'is-dim'); return; }
+    addClass(li, 'is-focus');
+    addClass(card, 'is-focus');
+    var kids = card.childNodes, body = null, i;
+    for (i = 0; i < kids.length; i++) { if (kids[i].className === 'menu-body') { body = kids[i]; break; } }
+    if (!body) { return; }
+    var tag = document.createElement('span');
+    tag.className = 'menu-focus';
+    tag.appendChild(document.createTextNode(M.focusTag || '이 코스의 영상'));
+    body.insertBefore(tag, body.firstChild ? body.firstChild.nextSibling : null);
+  }
+
   function renderMenu() {
     setText(dom.menuTitle, M.title || '');
     setText(dom.menuSub,   M.subtitle || '');
@@ -931,6 +979,7 @@
       li = document.createElement('li');
       li.className = 'menu-item';
       var card = makeMenuCard(id, info, ready);
+      if (FOCUS && ALL[FOCUS] && ready) { markFocus(li, card, id === FOCUS); }
       li.appendChild(card);
       dom.menuList.appendChild(li);
       if (ready) { menuCards.push(id); }

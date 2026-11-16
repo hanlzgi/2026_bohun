@@ -2080,6 +2080,56 @@
       }
     },
     {
+      "id": "c1-end",
+      "title": "1코스 자료 출처",
+      "type": "end",
+      "course": 1,
+      "available": true,
+      "mapPin": true,
+      "hasText": true,
+      "textFile": "end-c1",
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        }
+      ],
+      "endLayout": {
+        "list": {
+          "x": 315,
+          "y": 385,
+          "w": 1430,
+          "h": 465,
+          "size": 26,
+          "itemW": 380
+        },
+        "buttons": {
+          "y": 905,
+          "w": 250,
+          "h": 64,
+          "gap": 36,
+          "cx": 1027
+        }
+      }
+    },
+    {
       "id": "c2-map",
       "title": "2코스 지도",
       "type": "map",
@@ -4065,6 +4115,56 @@
         "y": 120,
         "w": 1493,
         "h": 840
+      }
+    },
+    {
+      "id": "c2-end",
+      "title": "2코스 자료 출처",
+      "type": "end",
+      "course": 2,
+      "available": true,
+      "mapPin": true,
+      "hasText": true,
+      "textFile": "end-c2",
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        }
+      ],
+      "endLayout": {
+        "list": {
+          "x": 315,
+          "y": 385,
+          "w": 1430,
+          "h": 465,
+          "size": 26,
+          "itemW": 380
+        },
+        "buttons": {
+          "y": 905,
+          "w": 250,
+          "h": 64,
+          "gap": 36,
+          "cx": 1027
+        }
       }
     },
     {
@@ -6156,6 +6256,56 @@
       }
     },
     {
+      "id": "c3-end",
+      "title": "3코스 자료 출처",
+      "type": "end",
+      "course": 3,
+      "available": true,
+      "mapPin": true,
+      "hasText": true,
+      "textFile": "end-c3",
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        }
+      ],
+      "endLayout": {
+        "list": {
+          "x": 315,
+          "y": 385,
+          "w": 1430,
+          "h": 465,
+          "size": 26,
+          "itemW": 380
+        },
+        "buttons": {
+          "y": 905,
+          "w": 250,
+          "h": 64,
+          "gap": 36,
+          "cx": 1027
+        }
+      }
+    },
+    {
       "id": "c4-map",
       "title": "4코스 지도",
       "type": "map",
@@ -7995,6 +8145,56 @@
         "y": 120,
         "w": 1493,
         "h": 840
+      }
+    },
+    {
+      "id": "c4-end",
+      "title": "4코스 자료 출처",
+      "type": "end",
+      "course": 4,
+      "available": true,
+      "mapPin": true,
+      "hasText": true,
+      "textFile": "end-c4",
+      "textBlocks": [
+        {
+          "id": "badge",
+          "x": 299,
+          "y": 166,
+          "w": 140,
+          "size": 24,
+          "color": "#393973",
+          "family": "sans",
+          "weight": 700,
+          "align": "center"
+        },
+        {
+          "id": "title",
+          "x": 250,
+          "y": 225,
+          "w": 1560,
+          "size": 58,
+          "color": "#ffffff",
+          "family": "sans",
+          "weight": 700
+        }
+      ],
+      "endLayout": {
+        "list": {
+          "x": 315,
+          "y": 385,
+          "w": 1430,
+          "h": 465,
+          "size": 26,
+          "itemW": 380
+        },
+        "buttons": {
+          "y": 905,
+          "w": 250,
+          "h": 64,
+          "gap": 36,
+          "cx": 1027
+        }
       }
     },
     {

@@ -54,16 +54,16 @@
   function scaleF() { return wrap.clientWidth / STAGE_W; }
   function layout() {
     const s = scaleF();
-    stage.style.transform = `scale(${s})`;
+    stage.style.transform = ZOOM.on ? `translate(${ZOOM.tx}px,${ZOOM.ty}px) scale(${s * ZOOM.k})` : `scale(${s})`;
     chrome.querySelectorAll('.hot').forEach(h => {
       const x = +h.dataset.x, y = +h.dataset.y, d = (+h.dataset.r || R) * 2 * s;
       h.style.left = (x * s) + 'px'; h.style.top = (y * s) + 'px'; h.style.width = d + 'px'; h.style.height = d + 'px';
     });
   }
-  window.addEventListener('resize', () => { sizeWrap(); layout(); checkPortrait(); });
+  window.addEventListener('resize', () => { if (ZOOM.on) zoomOff(true); sizeWrap(); layout(); checkPortrait(); });
 
   let tT;
-  function toast(msg) { toastEl.textContent = msg; toastEl.classList.add('show'); clearTimeout(tT); tT = setTimeout(() => toastEl.classList.remove('show'), 2200); }
+  function toast(msg, ms) { toastEl.textContent = msg; toastEl.classList.add('show'); clearTimeout(tT); tT = setTimeout(() => toastEl.classList.remove('show'), ms || 2200); }
 
   function makeHot(cfg, cls) {
     const b = document.createElement('button');
@@ -83,12 +83,18 @@
   }
 
   const curPage = () => PAGES[idx];
+  // 텍스트·사진 파일 키 — 화면상의 순번이 아니라 '원래 번호'로 찾는다.
+  // textFile 이 지정된 페이지(코스별 마지막 페이지 등)는 그 이름을 쓰고 번호 계산에서 빠진다 → 기존 001~075 파일·사진 이름 그대로 유지
+  let CKEYS = [];
+  function buildKeys() { let n = 0; CKEYS = PAGES.map(p => p.textFile ? p.textFile : pad3(++n)); }
+  const ckey = i => CKEYS[i] || pad3(i + 1);
   async function go(i, push = true) {
     if (i < 0 || i >= PAGES.length || i === idx) return;
     if (typeof closeToc === 'function') closeToc();
+    if (ZOOM.on) zoomOff(true);
     const _dir = i > idx ? 1 : -1;
     if (push) history.push(idx);
-    idx = i; await ensureContent(pad3(idx + 1)); render(_dir);
+    idx = i; await ensureContent(ckey(idx)); render(_dir);
   }
   function goId(id) { const i = PAGES.findIndex(p => p.id === id); if (i >= 0) go(i); }
 
@@ -98,7 +104,7 @@
       case 'logo': window.open(cfg.url || 'https://www.mpva.go.kr', '_blank'); break;
       case 'home': goId('title'); break;
       case 'portal': window.open(cfg.url, '_blank'); break;
-      case 'back': if (history.length) { idx = history.pop(); ensureContent(pad3(idx + 1)).then(render); } else go(Math.max(0, idx - 1), false); break;
+      case 'back': if (ZOOM.on) zoomOff(true); if (history.length) { idx = history.pop(); ensureContent(ckey(idx)).then(render); } else go(Math.max(0, idx - 1), false); break;
       case 'map': if (p.mapPin && p.course) { goId(`c${p.course}-map`); } else { toast('이 페이지에서는 지도 이동이 비활성화입니다'); } break;
       case 'toc': openToc(); break;
       case 'share': copyText(location.href.split('#')[0] + '#' + p.id); break;
@@ -217,7 +223,7 @@
   }
 
   function addPageInteractions(page, root, content) {
-    const pdata = (PHOTOS || {})[pad3(idx + 1)] || { display: [], gallery: [] };
+    const pdata = (PHOTOS || {})[ckey(idx)] || { display: [], gallery: [] };
     const dim = el('div', 'gal-dim');
     const gimg = el('img', 'gal-img');
     const prev = el('button', 'gal-nav gal-prev'); prev.innerHTML = '‹';
@@ -256,7 +262,7 @@
         b.innerHTML = '<img class="ar-ico-img" src="assets/icons/vr-ico.svg' + V + '" alt="VR">';
       }
       else { b = el('div', 'btn-add', { left: px(rc.x), top: px(rc.y), width: px(rc.w), height: px(rc.h) }); b.textContent = label || ''; }
-      if (url) b.addEventListener('click', () => window.open(url, '_blank'));
+      if (url) b.addEventListener('click', () => window.open(bt.type === 'inter' ? withFrom(url, page.id) : url, '_blank'));
       if (tipTxt) {
         const tip = el('div', 'btn-tip'); tip.textContent = tipTxt; tipLayer.appendChild(tip);
         b.setAttribute('aria-label', tipTxt);
@@ -277,7 +283,7 @@
 
   function renderQuiz(page, root, content) {
     const q = (content && content.quiz) || {};
-    const pnum = pad3(idx + 1); const pd = (PHOTOS || {})[pnum] || { display: [] };
+    const pnum = ckey(idx); const pd = (PHOTOS || {})[pnum] || { display: [] };
     // 문제 텍스트 (편집 가능)
     if (page.qtext && q.question) {
       const c = page.qtext;
@@ -326,7 +332,7 @@
       <div class="ph-sub">${page.available ? '소스 보유 — 콘텐츠 작업 예정' : '세부 페이지 구축 예정'}</div><div class="ph-tag">${page.id}</div>`;
     root.appendChild(ph);
   }
-  const typeLabel = t => ({ title: '타이틀', toc: '목차', map: '지도', prestudy: '사전 학습', intro: '개론', reading: '읽기자료', quiz: '퀴즈', note: '탐방노트' }[t] || t);
+  const typeLabel = t => ({ title: '타이틀', toc: '목차', map: '지도', prestudy: '사전 학습', intro: '개론', reading: '읽기자료', quiz: '퀴즈', note: '탐방노트', end: '자료 출처' }[t] || t);
 
   // ===== 탐방노트 저장소 (IndexedDB · 로그인 불필요, 브라우저 영속) =====
   const NDB = 'bohun_note'; let _ndb = null;
@@ -534,10 +540,53 @@
     const bd = el('div', 'frm-badge'); if (page.badgeTop != null) { bd.style.top = px(page.badgeTop); } const fl = el('span', 'frm-flag'); fl.innerHTML = FLAG_SVG; bd.appendChild(fl); root.appendChild(bd);
   }
 
+  // ===== 코스별 마지막 페이지 — 자료 출처 + [목차로 이동] [다음 코스 시작] [탐방 종료] =====
+  // 문안: content/text/end-cN.json — sources 에 {"item": 자료명, "source": 출처 기관} 을 한 줄씩 추가.
+  // 레이아웃: sitemap 의 endLayout. 다음 페이지가 다음 코스 지도일 때만 '다음 코스 시작'이 나온다(4코스 뒤에는 없음).
+  function renderEnd(page, root, content) {
+    const c = content || {}, L = page.endLayout || {};
+    const ls = L.list || { x: 315, y: 385, w: 1430, h: 465, size: 26, itemW: 380 };
+    const box = el('div', 'end-list', { left: px(ls.x), top: px(ls.y), width: px(ls.w), height: px(ls.h), fontSize: px(ls.size || 26) });
+    if (c.sourcesTitle) { const h = el('div', 'end-head'); h.textContent = c.sourcesTitle; box.appendChild(h); }
+    (Array.isArray(c.sources) ? c.sources : []).forEach(s => {
+      if (s == null || s === '') return;
+      const row = el('div', 'end-row');
+      if (typeof s === 'object') {
+        const it = el('div', 'end-item', { width: px(ls.itemW || 380) }); it.textContent = s.item || ''; row.appendChild(it);
+        const sc = el('div', 'end-src'); sc.textContent = s.source || ''; row.appendChild(sc);
+      } else { const sc = el('div', 'end-src'); sc.textContent = String(s); row.appendChild(sc); }
+      box.appendChild(row);
+    });
+    root.appendChild(box);
+    const lb = c.labels || {};
+    const nextIdx = idx + 1, nextPage = PAGES[nextIdx];
+    const defs = [
+      { cls: 'end-toc', txt: lb.toc || '목차로 이동', fn: () => goId('toc') },
+      (nextPage && nextPage.type === 'map') ? { cls: 'end-next', txt: lb.next || '다음 코스 시작', fn: () => go(nextIdx) } : null,
+      { cls: 'end-exit', txt: lb.exit || '탐방 종료', fn: () => exitTour(c.exitMsg) }
+    ].filter(Boolean);
+    const bl = L.buttons || { y: 905, w: 250, h: 64, gap: 36, cx: 1027 };
+    let x = (bl.cx || 1027) - (defs.length * bl.w + (defs.length - 1) * bl.gap) / 2;   // 1027 = 흰 본문 카드(232~1823)의 가운데
+    defs.forEach(d => {
+      const b = el('button', 'end-btn ' + d.cls, { left: px(x), top: px(bl.y), width: px(bl.w), height: px(bl.h) });
+      b.type = 'button'; b.textContent = d.txt; b.addEventListener('click', d.fn); root.appendChild(b); x += bl.w + bl.gap;
+    });
+  }
+  // 탐방 종료 — 창 닫기를 시도한다. 스크립트가 연 창이 아니면 브라우저가 막으므로, 안 닫히면 안내만 띄운다.
+  function exitTour(msg) {
+    try { window.close(); } catch (e) { }
+    setTimeout(() => { if (!window.closed) toast(msg || '브라우저 탭을 닫아 주세요', 3500); }, 300);
+  }
+  // 인터랙티브 영상으로 갈 때 '어느 페이지에서 왔는지'(from)를 붙인다 → 영상 쪽 '교재로 이동하기'가 이 페이지로 돌아온다
+  function withFrom(url, pid) {
+    const h = url.indexOf('#'), base = h >= 0 ? url.slice(0, h) : url, hash = h >= 0 ? url.slice(h) : '';
+    return base + (base.indexOf('?') >= 0 ? '&' : '?') + 'from=' + encodeURIComponent(pid) + hash;
+  }
+
   let _animTimer = 0;
   function render(dir) {
     const page = curPage();
-    const content = textCache[pad3(idx + 1)];
+    const content = textCache[ckey(idx)];
     const root = el('div', 'page');
     if (page.render === 'editable') renderEditable(page, root);
     else if (page.type === 'quiz') {
@@ -546,6 +595,7 @@
       renderQuiz(page, root, content);
     }
     else if (page.type === 'note') { renderNote(page, root); }
+    else if (page.type === 'end') { renderFrame(page, root); renderEnd(page, root, content); }
     else if (page.type === 'reading' || page.type === 'intro' || page.type === 'prestudy') { renderFrame(page, root); }
     else if (page.type === 'map' && page.mapSvg) {
       root.classList.add('framed'); root.appendChild(el('div', 'frm-panel'));
@@ -590,7 +640,8 @@
     }
     chrome.classList.toggle('hide-top', page.type === 'title');
     chrome.classList.toggle('show-glyphs', page.render === 'placeholder');
-    chrome.classList.toggle('on-frame', page.type==='reading'||page.type==='intro'||page.type==='prestudy'||page.type==='note'||page.type==='map'||page.type==='quiz'||page.type==='toc');
+    chrome.classList.toggle('on-frame', page.type==='reading'||page.type==='intro'||page.type==='prestudy'||page.type==='note'||page.type==='map'||page.type==='quiz'||page.type==='toc'||page.type==='end');
+    document.body.classList.toggle('on-note', page.type === 'note');
     const pin=chrome.querySelector('.hot[data-action="map"]');
     if(pin){ pin.disabled = !(page.mapPin && page.course); }
     const _pg=document.querySelector('.pager'); if(_pg) _pg.style.display=(page.type==='note')?'none':'';
@@ -599,37 +650,96 @@
   }
 
   const sov=document.getElementById('searchOv'), sin=document.getElementById('searchInput'), sres=document.getElementById('searchRes');
-  function openSearch(){ sov.classList.add('open'); sin.value=''; sres.innerHTML=''; sin.focus(); }
+  // ===== 전체 검색 — 아직 열지 않은 페이지까지. 여러 단어는 AND(모두 포함), 띄어쓰기는 무시 =====
+  // 대상: 제목·본문·사진 설명·주석·퀴즈(문제·보기·해설)·자료 출처. 이미지(지도 카드·SVG) 속 글자는 검색되지 않음.
+  let SIDX = null, _sBuilding = null, _sTimer = 0, TOC_NAME = null;
+  const norm = t => String(t).replace(/\s+/g, '').toLowerCase();
+  const escH = t => String(t).replace(/[&<>"]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]));
+  const escR = t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  function strs(v, out) { if (v == null) return out; if (typeof v === 'string') out.push(v); else if (Array.isArray(v)) v.forEach(x => strs(x, out)); else if (typeof v === 'object') Object.keys(v).forEach(k => strs(v[k], out)); return out; }
+  function pageStrings(c) {
+    if (!c) return [];
+    const out = [];
+    strs(c.text, out);
+    if (c.quiz) { const q = c.quiz; strs([q.question, q.options, q.answerLabel, q.explanation, q.photoCaption], out); }
+    (c.annotations || []).forEach(an => strs([an.term, an.label, an.def], out));
+    strs([c.sourcesTitle, c.sources], out);
+    return out;
+  }
+  function pageName(p) {
+    if (!TOC_NAME) {
+      TOC_NAME = {};
+      TOC_DATA.forEach(co => {
+        TOC_NAME[co.map] = co.name + ' 지도'; TOC_NAME[co.pre] = '사전 조사'; if (co.end) TOC_NAME[co.end] = '자료 출처';
+        co.groups.forEach(g => { TOC_NAME[g.link] = '개론 · ' + g.label; g.items.forEach(it => { TOC_NAME[it[1]] = it[0]; }); });
+      });
+    }
+    return TOC_NAME[p.id] || String(p.title || p.id).replace(/^\d코스\s*/, '');
+  }
+  function buildIndex() {
+    if (SIDX) return Promise.resolve(SIDX);
+    if (_sBuilding) return _sBuilding;
+    const todo = PAGES.map((p, i) => i).filter(i => PAGES[i].hasText);
+    _sBuilding = Promise.all(todo.map(i => ensureContent(ckey(i)))).then(() => {
+      SIDX = todo.map(i => {
+        const p = PAGES[i], name = pageName(p), body = pageStrings(textCache[ckey(i)]).join(' \n ');
+        return { i, p, name, body, n: norm(name + ' ' + body) };
+      });
+      return SIDX;
+    });
+    return _sBuilding;
+  }
+  function snippet(raw, terms) {
+    const flat = raw.replace(/\s+/g, ' ').trim();
+    const pat = t => t.split('').map(escR).join('\\s*');
+    let pos = -1, len = 0;
+    for (const t of terms) { const m = new RegExp(pat(t), 'i').exec(flat); if (m) { pos = m.index; len = m[0].length; break; } }
+    let a = 0, z = Math.min(flat.length, 90);
+    if (pos >= 0) { a = Math.max(0, pos - 35); z = Math.min(flat.length, pos + len + 55); }
+    const seg = flat.slice(a, z), rs = [];
+    terms.forEach(t => { const re = new RegExp(pat(t), 'gi'); let m; while ((m = re.exec(seg))) { if (!m[0].length) { re.lastIndex++; continue; } rs.push([m.index, m.index + m[0].length]); } });
+    rs.sort((p, q) => p[0] - q[0]);
+    let html = '', cur = 0;
+    rs.forEach(r => { if (r[1] <= cur) return; const st = Math.max(r[0], cur); html += escH(seg.slice(cur, st)) + '<mark>' + escH(seg.slice(st, r[1])) + '</mark>'; cur = r[1]; });
+    html += escH(seg.slice(cur));
+    return (a > 0 ? '…' : '') + html + (z < flat.length ? '…' : '');
+  }
+  function openSearch(){ sov.classList.add('open'); sin.value=''; sres.innerHTML=''; sin.focus(); buildIndex(); }
   function closeSearch(){ sov.classList.remove('open'); }
   function doSearch(q){
-    q=q.trim(); if(!q){ sres.innerHTML=''; return; }
-    const hits=PAGES.filter(p=>p.title.includes(q)||p.id.includes(q)).slice(0,30);
-    sres.innerHTML=hits.length? hits.map(p=>`<div class="res" data-id="${p.id}">${p.title} <small>${p.id}</small></div>`).join('') : '<div class="res">검색 결과 없음</div>';
+    const terms = String(q).trim().split(/\s+/).map(norm).filter(Boolean);
+    if (!terms.length) { sres.innerHTML=''; return; }
+    if (!SIDX) { sres.innerHTML='<div class="res res-info">검색 준비 중…</div>'; buildIndex().then(() => { if (sin.value === q) doSearch(q); }); return; }
+    const hits = SIDX.filter(r => terms.every(t => r.n.indexOf(t) >= 0));
+    sres.innerHTML = '<div class="res-count">' + (hits.length ? '검색 결과 ' + hits.length + '건' : '검색 결과 없음') + '</div>' +
+      hits.slice(0, 80).map(r => '<div class="res" data-id="' + escH(r.p.id) + '"><div class="res-h"><b>' + (r.i + 1) + 'p</b>' + (r.p.course ? r.p.course + '코스 · ' : '') + escH(r.name) + '</div>' +
+        '<div class="res-s">' + snippet(r.body || r.name, terms) + '</div></div>').join('');
     sres.querySelectorAll('.res[data-id]').forEach(d=>d.addEventListener('click',()=>{ closeSearch(); goId(d.dataset.id); }));
   }
-  sin.addEventListener('input',e=>doSearch(e.target.value));
+  sin.addEventListener('input',()=>{ clearTimeout(_sTimer); _sTimer=setTimeout(()=>doSearch(sin.value),120); });
+  sin.addEventListener('keydown',e=>{ if(e.key==='Enter'){ const f=sres.querySelector('.res[data-id]'); if(f){ e.preventDefault(); f.click(); } } });
   document.getElementById('searchClose').addEventListener('click',closeSearch);
 
   function checkPortrait(){ document.body.classList.toggle('is-portrait', window.innerHeight>window.innerWidth); }
 
   // ===== 목차 팝업 — top '목차' 버튼. 코스 헤더→map, 사전조사→prestudy, 그룹→개론, 세부→읽기자료 =====
   const TOC_DATA = [
-    { num: '01', tag: '[독립]', region: '중국', name: '대한민국 임시 정부의 길', map: 'c1-map', pre: 'c1-prestudy', groups: [
+    { num: '01', tag: '[독립]', region: '중국', name: '대한민국 임시 정부의 길', map: 'c1-map', pre: 'c1-prestudy', end: 'c1-end', groups: [
       { label: '상하이 시기', link: 'c1-intro1', items: [['상하이 청사', 'c1-read1'], ['훙커우 공원', 'c1-read2']] },
       { label: '이동 시기', link: 'c1-intro2', items: [['자싱 김구 피난처', 'c1-read3'], ['자싱 임시 정부 요인 거주지', 'c1-read4'], ['항저우 청사', 'c1-read5'], ['창사 활동 구지 기념관', 'c1-read6'], ['류저우 활동 진열관(낙군사)', 'c1-read7']] },
       { label: '충칭 시기', link: 'c1-intro3', items: [['충칭 연화지 청사', 'c1-read8'], ['한국광복군 총사령부', 'c1-read9'], ['한국광복군 제2지대 OSS 훈련지', 'c1-read10']] }
     ] },
-    { num: '02', tag: '[독립]', region: '중국/러시아', name: '항일 무장 투쟁의 길', map: 'c2-map', pre: 'c2-prestudy', groups: [
+    { num: '02', tag: '[독립]', region: '중국/러시아', name: '항일 무장 투쟁의 길', map: 'c2-map', pre: 'c2-prestudy', end: 'c2-end', groups: [
       { label: '안중근 의거', link: 'c2-intro1', items: [['안중근 단지동맹비', 'c2-read1'], ['하얼빈역 및 안중근의사기념관', 'c2-read2'], ['여순관동지방법원', 'c2-read3'], ['여순 일아감옥 구지', 'c2-read4']] },
       { label: '독립군 양성', link: 'c2-intro2', items: [['류허 신흥강습소 터', 'c2-read5'], ['합니하 신흥무관학교 터', 'c2-read6'], ['고산자 신흥무관학교 터', 'c2-read7']] },
       { label: '봉오동 전투와 청산리 대첩', link: 'c2-intro3', items: [['봉오동반일전적지기념비', 'c2-read8'], ['청산리항일대첩 기념비', 'c2-read9'], ['한중우의공원', 'c2-read10']] }
     ] },
-    { num: '03', tag: '[독립/호국]', region: '미국', name: '하와이 노동자의 나라에서 우방까지', map: 'c3-map', pre: 'c3-prestudy', groups: [
+    { num: '03', tag: '[독립/호국]', region: '미국', name: '하와이 노동자의 나라에서 우방까지', map: 'c3-map', pre: 'c3-prestudy', end: 'c3-end', groups: [
       { label: '미국 이주 초기(정착)', link: 'c3-intro1', items: [['대한인국민회 하와이지방총본부', 'c3-read1'], ['아후이마누 대조선국민군단 병영 터', 'c3-read2']] },
       { label: '독립운동 지원(자강)', link: 'c3-intro2', items: [['LA 대한인국민회 총회관 기념관', 'c3-read3'], ['LA 흥사단 본부 건물', 'c3-read4'], ['샌프란시스코 대한인국민회 총회관', 'c3-read5'], ['윌로우스 비행가양성소', 'c3-read6'], ['필라델피아 서재필 기념관', 'c3-read7'], ['뉴욕한인교회', 'c3-read8']] },
       { label: '6·25 전쟁 참전(우방)', link: 'c3-intro3', items: [['레인 빅토리호', 'c3-read9'], ['태평양 국립묘지 한국전 참전용사 헌정 기념석', 'c3-read10'], ['워싱턴 D.C. 한국전 참전용사 기념공원', 'c3-read11']] }
     ] },
-    { num: '04', tag: '[독립/호국]', region: '유럽', name: '외교 활동의 무대와 6·25 전쟁 참전', map: 'c4-map', pre: 'c4-prestudy', groups: [
+    { num: '04', tag: '[독립/호국]', region: '유럽', name: '외교 활동의 무대와 6·25 전쟁 참전', map: 'c4-map', pre: 'c4-prestudy', end: 'c4-end', groups: [
       { label: '헤이그 특사', link: 'c4-intro1', items: [['런던 이한응 순국지', 'c4-read1'], ['제2회 만국 평화 회의 개최지(빈넨호프 왕궁 기사홀)', 'c4-read2'], ['헤이그 이준열사 순국지(기념관)', 'c4-read3']] },
       { label: '대한민국 임시 정부 외교 활동', link: 'c4-intro2', items: [['대한민국 임시 정부 파리위원부', 'c4-read4'], ['브뤼셀 만국 평화 대회 개최지', 'c4-read5']] },
       { label: '6·25 전쟁 참전', link: 'c4-intro3', items: [['룩셈부르크 국립 군사박물관', 'c4-read6'], ['벨기에 국립대성심성당', 'c4-read7'], ['파리 한국전 참전비', 'c4-read8'], ['런던 한국전 참전기념비', 'c4-read9']] }
@@ -677,6 +787,7 @@
           li.addEventListener('click', () => tocGo(it[1])); dw.appendChild(li);
         });
       });
+      if (course.end) { const en = el('button', 'toc-item toc-pre toc-end'); en.type = 'button'; en.textContent = '자료 출처'; en.dataset.pid = course.end; en.addEventListener('click', () => tocGo(course.end)); dw.appendChild(en); }
       sec.appendChild(dw); body.appendChild(sec);
     });
     panel.appendChild(body); tocDim.appendChild(panel);
@@ -713,10 +824,11 @@
   pagerInput.addEventListener('blur',pagerJump);
   document.addEventListener('keydown',e=>{
     if(sov.classList.contains('open')){ if(e.key==='Escape')closeSearch(); return; }
+    if(ZOOM.on && e.key==='Escape'){ zoomOff(); return; }
     if(tocDim && tocDim.classList.contains('show')){ if(e.key==='Escape') closeToc(); return; }
     const ae=document.activeElement;
     if(ae && (ae.isContentEditable || ae.tagName==='INPUT' || ae.tagName==='TEXTAREA')) return;
-    if(overlayOpen()) return;
+    if(overlayOpen() || ZOOM.on) return;
     if(e.key==='ArrowLeft')go(idx-1); else if(e.key==='ArrowRight')go(idx+1);
   });
 
@@ -724,10 +836,70 @@
   window.addEventListener('wheel',e=>{
     const p=curPage(); if(p && p.type==='note') return;
     if(overlayOpen()) return;
+    if(ZOOM.on){ ZOOM.ty-=e.deltaY; ZOOM.tx-=(e.deltaX||0); zoomClamp(); layout(); return; }   // 확대 중에는 휠 = 화면 이동
+    const _el=e.target && e.target.closest ? e.target.closest('.end-list') : null; if(_el && _el.scrollHeight>_el.clientHeight+2) return;   // 출처 목록이 길면 목록 스크롤
     if(Math.abs(e.deltaY)<8) return;
     if(_wheelLock) return; _wheelLock=true; setTimeout(()=>{_wheelLock=false;},650);
     if(e.deltaY>0) go(idx+1); else go(idx-1);
   },{passive:true});
+
+  // ===== 우클릭 금지 — 탐방노트 페이지에서만 허용(편집기 붙여넣기 등) =====
+  document.addEventListener('contextmenu', e => { const p = curPage(); if (p && p.type === 'note') return; e.preventDefault(); });
+
+  // ===== 본문 확대 — 더블클릭(터치는 두 번 탭)한 지점을 중심으로 400% =====
+  // 본문(stage)만 확대, 좌측 레일·페이저는 그대로. 드래그/휠로 이동. 해제: 다시 더블클릭 · ESC · 안내 배지 클릭 · 페이지 이동.
+  // 버튼·사진·지도·퀴즈 보기 등 누르는 요소 위, 탐방노트 페이지에서는 확대하지 않는다. 확대 중 버튼을 누르면 원래 크기로 돌아온 뒤 동작한다.
+  const ZOOM = { on: false, k: 4, tx: 0, ty: 0 };
+  const NOZOOM = 'button, a, input, textarea, select, [contenteditable], .hot, .pager, .nav-zone, .zoom-hint, .map-hot, .map-card, .map-dim, .quiz-opt, .quiz-photo, .quiz-ans, .quiz-wrong, .quiz-zoom, .page-photo, .gal-dim, .btn-add, .btn-inter, .btn-ar, .btn-vr, .btn-gmap, .toc-dim, .toc-card, .card-hotspot, .reveal-btn';
+  const zoomHint = el('button', 'zoom-hint'); zoomHint.type = 'button'; zoomHint.textContent = '400% 확대 중 · 두 번 누르거나 ESC로 원래 크기'; wrap.appendChild(zoomHint);
+  zoomHint.addEventListener('click', e => { e.stopPropagation(); zoomOff(); });
+  function zoomClamp() { const W = wrap.clientWidth, H = wrap.clientHeight; ZOOM.tx = Math.min(0, Math.max(W - W * ZOOM.k, ZOOM.tx)); ZOOM.ty = Math.min(0, Math.max(H - H * ZOOM.k, ZOOM.ty)); }
+  function zoomApply(anim) { stage.classList.toggle('zoom-anim', !!anim); layout(); if (anim) setTimeout(() => stage.classList.remove('zoom-anim'), 260); }
+  function zoomOn(cx, cy) { ZOOM.on = true; ZOOM.tx = cx - cx * ZOOM.k; ZOOM.ty = cy - cy * ZOOM.k; zoomClamp(); wrap.classList.add('is-zoomed'); zoomApply(true); }
+  function zoomOff(instant) { if (!ZOOM.on) return; ZOOM.on = false; ZOOM.tx = ZOOM.ty = 0; wrap.classList.remove('is-zoomed'); zoomApply(!instant); }
+  function zoomable(t) { const p = curPage(); if (!p || p.type === 'note' || overlayOpen()) return false; return !(t && t.closest && t.closest(NOZOOM)); }
+  function clearSel() { try { const sl = window.getSelection && window.getSelection(); if (sl) sl.removeAllRanges(); } catch (e) { } }
+  let _lastTouch = 0, _tap = null, _drag = null, _dragMoved = false;
+  wrap.addEventListener('dblclick', e => {
+    if (Date.now() - _lastTouch < 800) return;            // 터치 두 번 탭은 touchend 에서 처리
+    if (ZOOM.on) { if (!(e.target.closest && e.target.closest(NOZOOM))) { clearSel(); zoomOff(); } return; }
+    if (!zoomable(e.target)) return;
+    const r = wrap.getBoundingClientRect(); clearSel(); zoomOn(e.clientX - r.left, e.clientY - r.top);
+  });
+  wrap.addEventListener('touchend', e => {
+    _lastTouch = Date.now();
+    if (e.touches.length || e.changedTouches.length !== 1 || _dragMoved) { _tap = null; return; }
+    const t = e.changedTouches[0], now = Date.now();
+    if (_tap && now - _tap.t < 320 && Math.abs(t.clientX - _tap.x) < 30 && Math.abs(t.clientY - _tap.y) < 30) {
+      _tap = null;
+      if (ZOOM.on) { if (!(e.target.closest && e.target.closest(NOZOOM))) { e.preventDefault(); zoomOff(); } return; }
+      if (!zoomable(e.target)) return;
+      e.preventDefault(); const r = wrap.getBoundingClientRect(); zoomOn(t.clientX - r.left, t.clientY - r.top);
+    } else _tap = { t: now, x: t.clientX, y: t.clientY };
+  }, { passive: false });
+  wrap.addEventListener('pointerdown', e => {
+    if (!ZOOM.on || (e.pointerType === 'mouse' && e.button !== 0)) return;
+    if (e.target.closest && e.target.closest('.hot, .pager, .zoom-hint')) return;
+    _drag = { x: e.clientX, y: e.clientY, tx: ZOOM.tx, ty: ZOOM.ty, id: e.pointerId }; _dragMoved = false;
+  });
+  window.addEventListener('pointermove', e => {
+    if (!_drag || e.pointerId !== _drag.id) return;
+    const dx = e.clientX - _drag.x, dy = e.clientY - _drag.y;
+    if (!_dragMoved && Math.abs(dx) + Math.abs(dy) < 6) return;
+    _dragMoved = true; wrap.classList.add('is-panning');
+    ZOOM.tx = _drag.tx + dx; ZOOM.ty = _drag.ty + dy; zoomClamp(); layout();
+  });
+  const _endDrag = e => { if (!_drag || (e && e.pointerId !== _drag.id)) return; _drag = null; wrap.classList.remove('is-panning'); if (_dragMoved) setTimeout(() => { _dragMoved = false; }, 0); };
+  window.addEventListener('pointerup', _endDrag); window.addEventListener('pointercancel', _endDrag);
+  // 확대 중 클릭: 드래그 직후 클릭은 무시 / 모서리 탭존은 막음 / 누르는 요소는 원래 크기로 돌린 뒤 그대로 동작
+  wrap.addEventListener('click', e => {
+    if (!ZOOM.on) return;
+    if (_dragMoved) { e.stopPropagation(); e.preventDefault(); _dragMoved = false; return; }
+    const t = e.target;
+    if (t.closest && t.closest('.nav-zone')) { e.stopPropagation(); e.preventDefault(); return; }
+    if (t.closest && t.closest('.zoom-hint')) return;
+    if (t.closest && t.closest(NOZOOM)) zoomOff(true);
+  }, true);
 
   async function ensureContent(num){
     if(num in textCache) return textCache[num];
@@ -742,7 +914,7 @@
         fetch('content/sitemap.json',{cache:'no-cache'}).then(r=>r.json()),
         fetch('content/photos.json',{cache:'no-cache'}).then(r=>r.ok?r.json():{}).catch(()=>({}))
       ]);
-      SM=sm; PAGES=sm.pages; STAGE_W=sm.stage.w; STAGE_H=sm.stage.h; R=(sm.chrome&&sm.chrome.iconR)||34; PHOTOS=ph;
+      SM=sm; PAGES=sm.pages; buildKeys(); STAGE_W=sm.stage.w; STAGE_H=sm.stage.h; R=(sm.chrome&&sm.chrome.iconR)||34; PHOTOS=ph;
     }catch(e){
       stage.style.transform='none';
       stage.innerHTML='<div style="padding:60px 40px;font-size:24px;line-height:1.6;color:#1d1d1b">데이터를 불러오지 못했습니다.<br>이 교재는 로컬 서버로 실행해야 합니다 —<br>폴더의 <b>start.bat</b> 더블클릭 (또는 <code>python -m http.server</code> 후 localhost:8000).</div>';
@@ -750,7 +922,7 @@
     }
     sizeWrap(); buildChrome(); checkPortrait();
     const hash=location.hash.replace('#',''); const hi=PAGES.findIndex(p=>p.id===hash);
-    idx=hi>=0?hi:0; await ensureContent(pad3(idx+1)); render();
+    idx=hi>=0?hi:0; await ensureContent(ckey(idx)); render();
   }
   boot();
 })();

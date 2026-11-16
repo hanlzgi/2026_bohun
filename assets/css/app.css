@@ -1912,3 +1912,39 @@ body.is-portrait .portrait {
 .toc-group:hover, .toc-item:hover { background: rgba(255, 255, 255, .13); }
 .toc-cname.cur, .toc-group.cur, .toc-item.cur { background: rgba(255, 255, 255, .92); color: #393973; }
 .toc-item.cur { font-weight: 700; }
+
+/* ===================================================================
+   2026-11-16 수정 요청 반영 (우클릭 금지 / 400% 확대 / 전체 검색 / 코스별 마지막 페이지)
+   =================================================================== */
+/* 우클릭 금지 보조 — iOS 길게 누르기 메뉴(이미지 저장) 억제. 탐방노트 페이지는 제외 */
+body:not(.on-note) .stage img { -webkit-touch-callout: none; }
+
+/* 본문 확대(400%) — 확대 중에는 드래그로 이동 */
+.stageWrap { touch-action: manipulation; }
+.stageWrap.is-zoomed { touch-action: none; }
+.stageWrap.is-zoomed .stage { cursor: grab; -webkit-user-select: none; user-select: none; }
+.stageWrap.is-panning .stage { cursor: grabbing; }
+.stage.zoom-anim { transition: transform .24s ease; }
+.stageWrap.is-zoomed .chrome.on-frame .hot.top { background: rgba(56, 56, 112, .85); }
+.zoom-hint { position: absolute; top: 14px; left: 50%; transform: translateX(-50%); z-index: 30; display: none; padding: 8px 16px; border: 0; border-radius: 999px; background: rgba(20, 20, 40, .78); color: #fff; font-family: var(--font-sans); font-size: 14px; cursor: pointer; white-space: nowrap; }
+.stageWrap.is-zoomed .zoom-hint { display: block; }
+
+/* 전체 검색 결과 */
+.search-ov .res-count { color: rgba(255, 255, 255, .7); font-size: 15px; margin: 0 4px 10px; }
+.search-ov .res-h { font-size: 17px; font-weight: 600; }
+.search-ov .res-h b { display: inline-block; min-width: 52px; margin-right: 6px; color: #b9c0ff; }
+.search-ov .res-s { margin-top: 6px; font-size: 15px; line-height: 1.55; color: rgba(255, 255, 255, .78); }
+.search-ov .res mark { background: #f2b544; color: #1d1d1b; border-radius: 3px; padding: 0 2px; }
+.search-ov .res-info { cursor: default; }
+
+/* 코스별 마지막 페이지 — 자료 출처(자료명 | 출처) + 버튼 */
+.end-list { position: absolute; z-index: 9; overflow-y: auto; font-family: var(--font-sans); color: #1d1d1b; line-height: 1.55; }
+.end-head { font-size: 1.35em; font-weight: 800; color: #555; margin-bottom: .8em; }
+.end-row { display: flex; margin-bottom: .3em; }
+.end-item { flex: 0 0 auto; font-weight: 700; color: #3f7a3a; padding-right: 1em; }
+.end-src { flex: 1 1 auto; min-width: 0; }
+.end-btn { position: absolute; z-index: 11; border: 0; border-radius: 999px; cursor: pointer; font-family: var(--font-sans); font-weight: 700; font-size: 24px; color: #fff; background: var(--color-primary); transition: transform .1s ease; touch-action: manipulation; }
+.end-btn:hover { transform: scale(1.02); }
+.end-btn:active { transform: translate(2px, 2px); }
+.end-btn.end-next { background: #5f68d4; }
+.end-btn.end-exit { background: #6b6b80; }

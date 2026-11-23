@@ -22,7 +22,7 @@ window.TEXTBOOK_CONTENT = {
       ],
       "cards": [
         {
-          "id": "course1", "x": 247, "y": 243, "w": 399, "h": 667, "img": "assets/01_title/cards/c1.png", "region": "중국", "title": "대한민국\n임시 정부의 길",
+          "id": "course1", "x": 247, "y": 243, "w": 399, "h": 667, "img": "assets/01_title/cards/c1.png", "region": "중국", "title": "대한민국\n임시정부의 길",
           "badge_x": 281, "badge_y": 300, "region_x": 400, "region_y": 700, "title_x": 326, "title_y": 740, "title_w": 239
         },
         {

@@ -186,7 +186,7 @@
       },
       "mapSvg": "assets/c1/map/c1-map.svg",
       "mapBadge": "중국",
-      "mapTitle": "대한민국\n임시 정부의 길"
+      "mapTitle": "대한민국\n임시정부의 길"
     },
     {
       "id": "c1-prestudy",
@@ -3250,17 +3250,6 @@
           "place": "up"
         },
         {
-          "type": "add",
-          "rect": {
-            "x": 575,
-            "y": 905,
-            "w": 118,
-            "h": 39
-          },
-          "key": "add3",
-          "place": "up"
-        },
-        {
           "type": "gmap",
           "rect": {
             "x": 451,
@@ -3393,17 +3382,6 @@
             "h": 55
           },
           "key": "gmap"
-        },
-        {
-          "type": "inter",
-          "rect": {
-            "x": 705,
-            "y": 905,
-            "w": 170,
-            "h": 39
-          },
-          "key": "inter",
-          "place": "up"
         }
       ]
     },
@@ -3639,6 +3617,17 @@
             "h": 55
           },
           "key": "gmap"
+        },
+        {
+          "type": "inter",
+          "rect": {
+            "x": 705,
+            "y": 905,
+            "w": 170,
+            "h": 39
+          },
+          "key": "inter",
+          "place": "up"
         }
       ]
     },
@@ -4204,7 +4193,7 @@
           "x": 874,
           "y": 462,
           "r": 34,
-          "label": "캘리포니아",
+          "label": "윌로우스",
           "link": "c3-read6",
           "card": "assets/c3/map/c3-map_card4.webp"
         },

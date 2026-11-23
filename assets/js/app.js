@@ -38,7 +38,7 @@
   }; const el = (t, c, css) => { const n = document.createElement(t); if (c) n.className = c; if (css) Object.assign(n.style, css); return n; };
   const px = v => v + 'px';
   // 고정 캐시 버전 — 에셋(사진/SVG/아이콘) 교체 시 아래 문자열을 수동으로 올릴 것 (브라우저 캐시 활용)
-  const V = '?v=20260709';
+  const V = '?v=20261123';
   const pad3 = n => String(n).padStart(3, '0');
 
   // aspect-ratio 미지원 구형 브라우저(Chromium<88 등) 폴백 — stageWrap 크기를 JS로 계산
@@ -537,7 +537,7 @@
     root.classList.add('framed');
     root.appendChild(el('div', 'frm-panel'));
     root.appendChild(el('div', 'frm-card frm-body'));
-    const bd = el('div', 'frm-badge'); if (page.badgeTop != null) { bd.style.top = px(page.badgeTop); } const fl = el('span', 'frm-flag'); fl.innerHTML = FLAG_SVG; bd.appendChild(fl); root.appendChild(bd);
+    const bd = el('div', 'frm-badge'); if (page.badgeTop != null) { bd.style.top = px(page.badgeTop); } if (page.badgeW != null) { bd.style.width = px(page.badgeW); } const fl = el('span', 'frm-flag'); fl.innerHTML = FLAG_SVG; bd.appendChild(fl); root.appendChild(bd);
   }
 
   // ===== 코스별 마지막 페이지 — 자료 출처 + [목차로 이동] [다음 코스 시작] [탐방 종료] =====
@@ -547,12 +547,19 @@
     const c = content || {}, L = page.endLayout || {};
     const ls = L.list || { x: 315, y: 385, w: 1430, h: 465, size: 26, itemW: 380 };
     const box = el('div', 'end-list', { left: px(ls.x), top: px(ls.y), width: px(ls.w), height: px(ls.h), fontSize: px(ls.size || 26) });
+    const srcList = (Array.isArray(c.sources) ? c.sources : []).filter(s => s != null && s !== '');
+    if ((ls.cols || 1) > 1) {   // 다단: 자료명 위·출처 아래, 위→아래로 채운 뒤 다음 단 (스크롤 없음, 줄바꿈 없음)
+      box.classList.add('end-cols');
+      box.style.gridTemplateColumns = 'repeat(' + ls.cols + ', minmax(0, 1fr))';
+      box.style.gridTemplateRows = 'repeat(' + Math.max(1, Math.ceil(srcList.length / ls.cols)) + ', auto)';
+      box.style.columnGap = px(ls.gap || 45);
+    }
     if (c.sourcesTitle) { const h = el('div', 'end-head'); h.textContent = c.sourcesTitle; box.appendChild(h); }
     (Array.isArray(c.sources) ? c.sources : []).forEach(s => {
       if (s == null || s === '') return;
       const row = el('div', 'end-row');
       if (typeof s === 'object') {
-        const it = el('div', 'end-item', { width: px(ls.itemW || 380) }); it.textContent = s.item || ''; row.appendChild(it);
+        const it = el('div', 'end-item', (ls.cols || 1) > 1 ? {} : { width: px(ls.itemW || 380) }); it.textContent = s.item || ''; row.appendChild(it);
         const sc = el('div', 'end-src'); sc.textContent = s.source || ''; row.appendChild(sc);
       } else { const sc = el('div', 'end-src'); sc.textContent = String(s); row.appendChild(sc); }
       box.appendChild(row);

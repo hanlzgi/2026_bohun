@@ -26,7 +26,7 @@ window.TEXTBOOK_CONTENT = {
           "badge_x": 281, "badge_y": 300, "region_x": 400, "region_y": 700, "title_x": 326, "title_y": 740, "title_w": 239
         },
         {
-          "id": "course2", "x": 645, "y": 243, "w": 399, "h": 667, "img": "assets/01_title/cards/c2.png", "region": "중국/러시아", "title": "항일 무장\n투쟁의 길",
+          "id": "course2", "x": 645, "y": 243, "w": 399, "h": 667, "img": "assets/01_title/cards/c2.png", "region": "중국/러시아", "title": "항일무장\n투쟁의 길",
           "badge_x": 679, "badge_y": 300, "region_x": 798, "region_y": 700, "title_x": 762, "title_y": 740, "title_w": 200
         },
         {

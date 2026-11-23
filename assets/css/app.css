@@ -1943,6 +1943,10 @@ body:not(.on-note) .stage img { -webkit-touch-callout: none; }
 .end-row { display: flex; margin-bottom: .3em; }
 .end-item { flex: 0 0 auto; font-weight: 700; color: #3f7a3a; padding-right: 1em; }
 .end-src { flex: 1 1 auto; min-width: 0; }
+.end-list.end-cols { display: grid; grid-auto-flow: column; align-content: start; row-gap: .6em; overflow: hidden; line-height: 1.3; }
+.end-cols .end-row { display: block; margin: 0; }
+.end-cols .end-item, .end-cols .end-src { white-space: nowrap; padding: 0; }
+.end-cols .end-src { color: #444; }
 .end-btn { position: absolute; z-index: 11; border: 0; border-radius: 999px; cursor: pointer; font-family: var(--font-sans); font-weight: 700; font-size: 24px; color: #fff; background: var(--color-primary); transition: transform .1s ease; touch-action: manipulation; }
 .end-btn:hover { transform: scale(1.02); }
 .end-btn:active { transform: translate(2px, 2px); }

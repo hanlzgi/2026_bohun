@@ -274,6 +274,7 @@
     (page.photoSlots || []).forEach((slot, i) => {
       const fn = pdata.display[i] || pdata.gallery[0]; if (!fn) return; const rc = slot.rect;
       const im = el('img', 'page-photo', { left: px(rc.x), top: px(rc.y), width: px(rc.w), height: px(rc.h), borderRadius: px(slot.radius || 20) });
+      if (slot.pos) im.style.objectPosition = slot.pos;
       im.src = 'photos/' + fn + V; im.title = '사진 크게 보기';
       im.addEventListener('error', () => { im.style.display = 'none'; });
       im.addEventListener('click', () => { const arr = (pdata.gallery.length ? pdata.gallery : [fn]).map(f => 'photos/' + f + V); gopen(arr, 0); });

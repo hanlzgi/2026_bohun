@@ -380,7 +380,8 @@
             "w": 330,
             "h": 218
           },
-          "radius": 20
+          "radius": 20,
+          "pos": "center top"
         },
         {
           "rect": {
@@ -1852,9 +1853,9 @@
       "hasText": true,
       "photoSlot": {
         "rect": {
-          "x": 400,
+          "x": 433,
           "y": 479,
-          "w": 512,
+          "w": 446,
           "h": 491
         },
         "radius": 14,
